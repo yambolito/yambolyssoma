@@ -177,36 +177,69 @@ body {
             <label for="equipment">Tipo de Equipos de Seguridad:</label>
             <div id="equipmentCheckboxes">
                 <label><input type="checkbox" name="equipment" value="zapato">Zapato de Seguridad</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="casco">Casco de Seguridad</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Orejeras para casco">Orejeras para casco</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Orejeras">Orejeras</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Guantes de badana">Guantes de badana</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Guantes anticorte">Guantes  anticorte</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="guantes de cuero">guantes cuero </label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="guantes acido nitrico">guantes de acido nitrico</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="guantes mapa">guantes mapa</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Guantes de soldar">guantes de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="casco de soldar">casco de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="camisa de soldar">camisa de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="hombreras para soldar">hombreras para soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="mandil de soldar">mandil de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="botas de soldar">botas de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="lentes">Lentes de seguridad</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="protector facial">protector facial</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="faja">faja de carga</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="entes Google">lentes Google</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="respirador 3m">respirador 3m</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="filtro organico">Filtro 3m organicos</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="filtro de particulas">filtro 3m particulas</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="traje de acido">traje de acido</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Chompa">Chompa</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="pantalones">pantalon de camara</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="medias">medias de camara</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="pasamontaña">pasamontaña</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Guantes de camara">Guantes de camara</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="traje termico">traje termico</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="traje">Traje de Cámara</label>
+                <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="botas">Botas Blancas</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="uniforme produccion">Uniforme produccion</label>
+                <input type="date" name="equipmentDeliveryDate">
             </div>
 
             <label for="deliveryDate">Fecha de Entrega:</label>
@@ -230,7 +263,7 @@ body {
     </div>
 
     <script>
- function updatePersonList(persons) {
+function updatePersonList(persons) {
     const personListUl = document.getElementById('personListUl');
     personListUl.innerHTML = '';
 
@@ -262,7 +295,7 @@ body {
         const equipmentList = document.createElement('ul');
         person.equipment.forEach(equipment => {
             const equipmentItem = document.createElement('li');
-            equipmentItem.textContent = equipment;
+            equipmentItem.textContent = `Equipo: ${equipment.equipmentName}, Fecha de Entrega: ${equipment.deliveryDate || person.deliveryDate}`;
             equipmentList.appendChild(equipmentItem);
         });
 
@@ -337,17 +370,22 @@ body {
           const deliveryDate = document.getElementById('deliveryDate').value;
           const photo = document.getElementById('photo').files[0];
 
+          
+        
+    
+
           const newPerson = {
-              name,
-              age,
-              birthday,
-              ingreso,
-              occupation,
-              area,
-              equipment,
-              deliveryDate,
-              photo: URL.createObjectURL(photo)
-          };
+    name: name,
+    age: age,
+    birthday: birthday,
+    ingreso: ingreso,
+    occupation: occupation,
+    area: area,
+    photo: URL.createObjectURL(photo),
+    equipment: equipment.map(e => ({ equipmentName: e, deliveryDate: deliveryDate })),
+    deliveryDate: deliveryDate
+    
+};
 
           let persons = JSON.parse(localStorage.getItem('persons')) || [];
           persons.push(newPerson);
@@ -380,18 +418,26 @@ body {
       }
 
       window.addEventListener('DOMContentLoaded', () => {
-    const username = prompt('Ingrese su nombre de usuario:');
-    const password = prompt('Ingrese su contraseña:');
+    let username = prompt('Ingrese su nombre de usuario:');
+    let password = prompt('Ingrese su contraseña:');
 
-    // Verificar si el nombre de usuario y la contraseña son correctos
-    if (username === 'yamboly' && password === 'yamboly2023') {
-        // Aquí puedes agregar el código que se ejecutará si las credenciales son correctas
-        console.log('Credenciales válidas. Acceso concedido.');
+    // Verificar si se ha ingresado un nombre de usuario y contraseña
+    if (username && password) {
+        // Verificar si el nombre de usuario y la contraseña son correctos
+        if (username === 'yamboly' && password === 'yamboly2023') {
+            // Credenciales válidas. Acceso concedido.
+            console.log('Credenciales válidas. Acceso concedido.');
+        } else {
+            // Credenciales inválidas. Acceso denegado.
+            console.log('Credenciales inválidas. Acceso denegado.');
+            // Redirigir a la página de acceso denegado
+            window.location.href = 'pagina_denegada.html';
+        }
     } else {
-        // Aquí puedes agregar el código que se ejecutará si las credenciales son incorrectas
-        console.log('Credenciales inválidas. Acceso denegado.');
-        // Puedes redirigir a otra página o mostrar un mensaje de error
-        // dependiendo de tus necesidades.
+        // Credenciales no proporcionadas. Acceso denegado.
+        console.log('Credenciales no proporcionadas. Acceso denegado.');
+        // Redirigir a la página de acceso denegado
+        window.location.href = 'pagina_denegada.html';
     }
 });
   </script>
