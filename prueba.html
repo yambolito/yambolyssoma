@@ -433,6 +433,29 @@ function updatePersonList(persons) {
     }
 });
   </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAvU1qrqZsw_JzZfT80ehUNbVdR_JqSyDM",
+      authDomain: "yambolito-9430a.firebaseapp.com",
+      projectId: "yambolito-9430a",
+      storageBucket: "yambolito-9430a.appspot.com",
+      messagingSenderId: "858872776611",
+      appId: "1:858872776611:web:87aaf04cff209a5bfafc16",
+      measurementId: "G-FMPS3K8WJM"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
 </main>
 </html>
