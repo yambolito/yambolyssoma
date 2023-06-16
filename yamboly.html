@@ -142,13 +142,14 @@ body {
 <header>
   <img src="carpeta1/Picture1.png" alt="logo">
   <nav>
-    <a href="">busqueda de personal</a>
-    <a href="">registros</a>
+    <a href="yamboly.html">busqueda de personal</a>
+    <a href="registros.html">registros</a>
     <a href="">documentos SSOMA</a>
   </nav>
 </header>
-<main>
+
 <body>
+    <main>
     <h1>Bienvenidos a SSOMA Yamboly</h1>
 
     <button id="addPersonBtn">Agregar Nuevo Personal</button>
@@ -177,7 +178,8 @@ body {
             <label for="equipment">Tipo de Equipos de Seguridad:</label>
             <div id="equipmentCheckboxes">
                 <label><input type="checkbox" name="equipment" value="zapato">Zapato de Seguridad</label>
-                <input type="date" name="equipmentDeliveryDate">
+                <label for="deliveryDate">Fecha de Entrega:</label>
+                 <input type="date" id="deliveryDate">
                 <label><input type="checkbox" name="equipment" value="casco">Casco de Seguridad</label>
                 <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="Orejeras para casco">Orejeras para casco</label>
@@ -239,11 +241,10 @@ body {
                 <label><input type="checkbox" name="equipment" value="botas">Botas Blancas</label>
                 <input type="date" name="equipmentDeliveryDate">
                 <label><input type="checkbox" name="equipment" value="uniforme produccion">Uniforme produccion</label>
-                <input type="date" name="equipmentDeliveryDate">
+                <input type="date" name="equipmentDeliveryDate" id="deliveryDate">
             </div>
 
-            <label for="deliveryDate">Fecha de Entrega:</label>
-            <input type="date" id="deliveryDate">
+            
 
             <label for="photo">Foto del Trabajador:</label>
             <input type="file" id="photo">
@@ -262,7 +263,9 @@ body {
         <ul id="personListUl"></ul>
     </div>
 
-    <script>
+    <script type="module">
+        
+        
 function updatePersonList(persons) {
     const personListUl = document.getElementById('personListUl');
     personListUl.innerHTML = '';
@@ -440,9 +443,7 @@ function updatePersonList(persons) {
         window.location.href = 'pagina_denegada.html';
     }
 });
-  </script>
-  </script>
-  <script type="module">
+  
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
@@ -465,6 +466,7 @@ function updatePersonList(persons) {
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
   </script>
+  </main>
 </body>
-</main>
+
 </html>

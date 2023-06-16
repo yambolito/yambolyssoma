@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Administrador de archivos</title>
+  <style>
+    header {
+      background-color: #15ebfa;
+    }
+
+    img {
+      width: 10%;
+    }
+
+    main {
+      background-color: #15ebfa;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #00d9f1fb;
+    }
+
+    .file-upload {
+      margin-bottom: 10px;
+    }
+
+    .file-list {
+      margin-top: 20px;
+    }
+
+    .pagination {
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td button {
+      padding: 4px 8px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    td button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<header>
+  <img src="carpeta1/Picture1.png" alt="logo">
+  <nav>
+    <a href="yamboly.html">busqueda de personal</a>
+    <a href="registros.html">registros</a>
+    <a href="">documentos SSOMA</a>
+  </nav>
+</header>
+
+<body>
+  <h1>Administrador de Archivos de Capacitacion</h1>
+
+  <div class="file-upload">
+    <input type="file" id="fileInput">
+    <label for="fileName">Nombre del archivo:</label>
+    <input type="text" id="fileName">
+    <button onclick="saveFile()">Guardar</button>
+  </div>
+
+  <table id="fileTable" class="file-list">
+    <thead>
+      <tr>
+        <th>Nombre de archivo</th>
+        <th>Fecha de archivo</th>
+        <th>Tipo de archivo</th>
+        <th>Visualizar</th>
+        <th>Descargar</th>
+      </tr>
+    </thead>
+    <tbody id="fileList"></tbody>
+  </table>
+
+  <div id="pagination" class="pagination"></div>
+
+  <script>
+    let files = JSON.parse(localStorage.getItem('files')) || [];
+    let currentPage = 1;
+    const pageSize = 5;
+    const fileTable = document.getElementById('fileTable');
+    const fileListElement = document.getElementById('fileList');
+    const paginationElement = document.getElementById('pagination');
+    const fileInput = document.getElementById('fileInput');
+    const fileNameInput = document.getElementById('fileName');
+
+    renderFiles();
+
+    function saveFile() {
+      const file = fileInput.files[0];
+      const fileName = fileNameInput.value;
+      const date = new Date().toLocaleDateString();
+      const fileType = file.type;
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const fileContent = event.target.result;
+
+        files.push({
+          name: fileName,
+          date: date,
+          type: fileType,
+          content: fileContent
+        });
+
+        localStorage.setItem('files', JSON.stringify(files));
+
+        renderFiles();
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    function renderFiles() {
+      fileListElement.innerHTML = '';
+
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = currentPage * pageSize;
+
+      const totalPages = Math.ceil(files.length / pageSize);
+
+      for (let i = startIndex; i < endIndex && i < files.length; i++) {
+        const file = files[i];
+
+        const fileRow = document.createElement('tr');
+        fileRow.innerHTML = `
+          <td>${file.name}</td>
+          <td>${file.date}</td>
+          <td>${file.type}</td>
+          <td><button onclick="viewFile('${file.content}', '${file.type}')">Visualizar</button></td>
+          <td><a href="${file.content}" download>Descargar</a></td>
+        `;
+
+        fileListElement.appendChild(fileRow);
+      }
+
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      paginationElement.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.textContent = i;
+
+        if (i === currentPage) {
+          pageLink.style.fontWeight = 'bold';
+        }
+
+        pageLink.addEventListener('click', function() {
+          currentPage = i;
+          renderFiles();
+        });
+
+        paginationElement.appendChild(pageLink);
+      }
+    }
+
+    function viewFile(content, type) {
+      const fileExtension = type.split('/')[1];
+      const base64Data = content.split(',')[1];
+      const blob = b64toBlob(base64Data, type);
+
+      const fileUrl = URL.createObjectURL(blob);
+
+      if (fileExtension === 'pdf') {
+        window.open(fileUrl);
+      } else {
+        const downloadLink = document.createElement('a');
+        downloadLink.href = fileUrl;
+        downloadLink.download = `file.${fileExtension}`;
+        downloadLink.click();
+      }
+    }
+
+    function b64toBlob(b64Data, contentType) {
+      contentType = contentType || '';
+      const sliceSize = 512;
+      const byteCharacters = atob(b64Data);
+      const byteArrays = [];
+
+      for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+        const byteNumbers = new Array(slice.length);
+
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+
+      return new Blob(byteArrays, { type: contentType });
+    }
+  </script>
+</body>
+</html>
