@@ -5,6 +5,21 @@
     <title>SSOMA Yamboly - Gestión de Personal</title>
     <link rel="icon" type="image/x-icon" href="carpeta1/Picture1.ico">
     <style>
+        .titulos a {
+      border: 1px solid transparent;
+      border-radius: 30px;
+      padding: 10px;
+      margin: 5px;
+      color: white;
+      text-decoration: none;
+      border-color: yellow;
+    }
+
+    .titulos a:hover {
+      background-color: yellow;
+      color: #ffffff;
+      border-color: yellow;
+    }
     header{background-color: #15ebfa;}
     img{
       width: 10%;
@@ -139,10 +154,10 @@ body {
         }
     </style>
 </head>
-<header>
-  <img src="carpeta1/Picture1.png" alt="logo">
-  <nav>
-    <a href="yamboly.html">busqueda de personal</a>
+<header class="header">
+<a href="yamboly.html"><img src="carpeta1/Picture1.png" alt="logo"></a>
+  <nav  class="titulos">
+    <a href="yamboly.html">busqueda de personal
     <a href="registros.html">registros</a>
     <a href="">documentos SSOMA</a>
   </nav>
