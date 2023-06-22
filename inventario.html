@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventario de Equipos de Seguridad</title>
+  <link rel="icon" type="image/x-icon" href="carpeta1/Picture1.ico">
+  <style>
+     .titulos a {
+      border: 1px solid transparent;
+      border-radius: 30px;
+      padding: 10px;
+      margin: 5px;
+      color: white;
+      text-decoration: none;
+      border-color: yellow;
+    }
+
+    .titulos a:hover {
+      background-color: yellow;
+      color: #ffffff;
+      border-color: yellow;
+    }
+    header{background-color: #15ebfa;}
+    img{
+      width: 10%;
+    }
+main{background-color: #15ebfa;}
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    
+    form {
+      margin-bottom: 20px;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #00d9f1fb;
+    }
+  </style>
+</head>
+<header class="header">
+<a href="yamboly.html"><img src="carpeta1/Picture1.png" alt="logo"></a>
+  <nav  class="titulos">
+    <a href="yamboly.html">Busqueda de personal
+    <a href="registros.html">Registros</a>
+    <a href="documents.html">Documentos SSOMA</a>
+    <a href="inventario.html">Invetario de EPP</a>
+  </nav>
+</header>
+<body>
+  <h1>Inventario de Equipos de Seguridad</h1>
+  
+  <form id="inventoryForm">
+    <label for="code">Código:</label>
+    <input type="text" id="code" required>
+    <br>
+    <label for="description">Descripción del Artículo:</label>
+    <input type="text" id="description" required>
+    <br>
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" required>
+    <br>
+    <label for="quantity">Cantidad Física:</label>
+    <input type="number" id="quantity" required>
+    <br>
+    <button type="button" onclick="addToInventory()">Agregar</button>
+  </form>
+  
+  <table id="inventoryTable">
+    <tr>
+      <th>Código</th>
+      <th>Descripción</th>
+      <th>Stock</th>
+      <th>Cantidad Física</th>
+      <th>Acciones</th>
+    </tr>
+  </table>
+
+  <script>
+    var editRowIndex = -1;
+
+    function addToInventory() {
+      var code = document.getElementById("code").value;
+      var description = document.getElementById("description").value;
+      var stock = document.getElementById("stock").value;
+      var quantity = document.getElementById("quantity").value;
+      
+      var table = document.getElementById("inventoryTable");
+
+      if (editRowIndex === -1) {
+        var row = table.insertRow(table.rows.length);
+        
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = code;
+        
+        var cell2 = row.insertCell(1);
+        cell2.innerHTML = description;
+        
+        var cell3 = row.insertCell(2);
+        cell3.innerHTML = stock;
+        
+        var cell4 = row.insertCell(3);
+        cell4.innerHTML = quantity;
+
+        var cell5 = row.insertCell(4);
+        cell5.innerHTML = '<button onclick="editRow(this)">Editar</button> <button onclick="deleteRow(this)">Eliminar</button>';
+        
+        saveToLocalStorage(); // Guardar en localStorage
+      } else {
+        var row = table.rows[editRowIndex];
+        
+        row.cells[0].innerHTML = code;
+        row.cells[1].innerHTML = description;
+        row.cells[2].innerHTML = stock;
+        row.cells[3].innerHTML = quantity;
+
+        row.cells[4].innerHTML = '<button onclick="editRow(this)">Editar</button> <button onclick="deleteRow(this)">Eliminar</button>';
+        
+        editRowIndex = -1;
+        saveToLocalStorage(); // Guardar en localStorage
+      }
+      
+      document.getElementById("code").value = "";
+      document.getElementById("description").value = "";
+      document.getElementById("stock").value = "";
+      document.getElementById("quantity").value = "";
+    }
+    
+    function editRow(button) {
+      var row = button.parentNode.parentNode;
+      var code = row.cells[0].innerHTML;
+      var description = row.cells[1].innerHTML;
+      var stock = row.cells[2].innerHTML;
+      var quantity = row.cells[3].innerHTML;
+
+      document.getElementById("code").value = code;
+      document.getElementById("description").value = description;
+      document.getElementById("stock").value = stock;
+      document.getElementById("quantity").value = quantity;
+
+      editRowIndex = row.rowIndex;
+    }
+    
+    function deleteRow(button) {
+      var row = button.parentNode.parentNode;
+      var code = row.cells[0].innerHTML;
+      var stock = row.cells[2].innerHTML;
+      var quantity = row.cells[3].innerHTML;
+
+      row.parentNode.removeChild(row);
+      
+      updateStock(code, stock, -quantity);
+      
+      saveToLocalStorage(); // Guardar en localStorage
+    }
+    
+    function updateStock(code, stock, quantity) {
+      var stockValue = parseInt(stock);
+      var quantityValue = parseInt(quantity);
+      var updatedStock = stockValue - quantityValue;
+      document.getElementById("stock").value = updatedStock;
+    }
+    
+    function saveToLocalStorage() {
+      var table = document.getElementById("inventoryTable");
+      var data = [];
+
+      for (var i = 1; i < table.rows.length; i++) {
+        var row = table.rows[i];
+        var code = row.cells[0].innerHTML;
+        var description = row.cells[1].innerHTML;
+        var stock = row.cells[2].innerHTML;
+        var quantity = row.cells[3].innerHTML;
+
+        data.push({
+          code: code,
+          description: description,
+          stock: stock,
+          quantity: quantity
+        });
+      }
+
+      localStorage.setItem("inventoryData", JSON.stringify(data));
+    }
+    
+    function loadFromLocalStorage() {
+      var data = localStorage.getItem("inventoryData");
+
+      if (data) {
+        data = JSON.parse(data);
+        var table = document.getElementById("inventoryTable");
+
+        for (var i = 0; i < data.length; i++) {
+          var row = table.insertRow(table.rows.length);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+          
+          cell1.innerHTML = data[i].code;
+          cell2.innerHTML = data[i].description;
+          cell3.innerHTML = data[i].stock;
+          cell4.innerHTML = data[i].quantity;
+          cell5.innerHTML = '<button onclick="editRow(this)">Editar</button> <button onclick="deleteRow(this)">Eliminar</button>';
+        }
+      }
+    }
+
+    loadFromLocalStorage();
+  </script>
+</body>
+</html>

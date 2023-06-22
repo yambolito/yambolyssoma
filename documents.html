@@ -3,7 +3,93 @@
 <head>
   <title>Administrador de archivos</title>
   <style>
-      
+      body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    background-color: #007bff;
+    padding: 20px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Estilos para dispositivos móviles */
+
+@media only screen and (max-width: 767px) {
+    /* Ajustar tamaño de la imagen del logo */
+    .logo img {
+        width: 50%;
+    }
+
+    /* Ajustar tamaño de la fuente para h1 */
+    h1 {
+        font-size: 24px;
+    }
+
+    /* Ajustar margen y tamaño de los botones */
+    .form-container button,
+    .search-container button {
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+
+    /* Ajustar tamaño de los inputs */
+    .form-container input[type="text"],
+    .form-container input[type="date"] {
+        width: 80%;
+    }
+
+    /* Ajustar margen y tamaño de la lista de personas */
+    .person-list ul li {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+}
+
+/* Estilos para tablets */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Ajustar tamaño de la imagen del logo */
+    .logo img {
+        width: 30%;
+    }
+
+    /* Ajustar tamaño de la fuente para h1 */
+    h1 {
+        font-size: 28px;
+    }
+
+    /* Ajustar margen y tamaño de los botones */
+    .form-container button,
+    .search-container button {
+        margin-top: 15px;
+        padding: 8px 12px;
+    }
+
+    /* Ajustar tamaño de los inputs */
+    .form-container input[type="text"],
+    .form-container input[type="date"] {
+        width: 60%;
+    }
+
+    /* Ajustar margen y tamaño de la lista de personas */
+    .person-list ul li {
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+}
 
     .titulos a {
       border: 1px solid transparent;
