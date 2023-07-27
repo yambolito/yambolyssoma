@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SSOMA Yamboly - Gestión de Personal</title>
+    <link rel="icon" type="image/x-icon" href="carpeta1/Picture1.ico">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    background-color: #007bff;
+    padding: 20px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Estilos para dispositivos móviles */
+
+@media only screen and (max-width: 767px) {
+    /* Ajustar tamaño de la imagen del logo */
+    .logo img {
+        width: 50%;
+    }
+
+    /* Ajustar tamaño de la fuente para h1 */
+    h1 {
+        font-size: 24px;
+    }
+
+    /* Ajustar margen y tamaño de los botones */
+    .form-container button,
+    .search-container button {
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+
+    /* Ajustar tamaño de los inputs */
+    .form-container input[type="text"],
+    .form-container input[type="date"] {
+        width: 80%;
+    }
+
+    /* Ajustar margen y tamaño de la lista de personas */
+    .person-list ul li {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+}
+
+/* Estilos para tablets */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Ajustar tamaño de la imagen del logo */
+    .logo img {
+        width: 30%;
+    }
+
+    /* Ajustar tamaño de la fuente para h1 */
+    h1 {
+        font-size: 28px;
+    }
+
+    /* Ajustar margen y tamaño de los botones */
+    .form-container button,
+    .search-container button {
+        margin-top: 15px;
+        padding: 8px 12px;
+    }
+
+    /* Ajustar tamaño de los inputs */
+    .form-container input[type="text"],
+    .form-container input[type="date"] {
+        width: 60%;
+    }
+
+    /* Ajustar margen y tamaño de la lista de personas */
+    .person-list ul li {
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+}
+
+
+
+        .titulos a {
+      border: 1px solid transparent;
+      border-radius: 30px;
+      padding: 10px;
+      margin: 5px;
+      color: white;
+      text-decoration: none;
+      border-color: yellow;
+    }
+
+    .titulos a:hover {
+      background-color: yellow;
+      color: #ffffff;
+      border-color: yellow;
+    }
+    header{background-color: #15ebfa;}
+    img{
+      width: 10%;
+    }
+main{background-color: #15ebfa;}
+
+body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #00d9f1fb;
+    }
+
+    .container {
+        background-color: #007bff;
+        padding: 20px;
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="file"] {
+            margin-top: 10px;
+        }
+
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-container input[type="checkbox"] {
+            margin-top: 5px;
+        }
+
+        .form-container button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .person-photo {
+    margin-bottom: 10px;
+}
+        .person-list {
+            display: none;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .person-list ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.person-list ul li img {
+    display: block;
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+        .person-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .person-list ul li {
+            margin-bottom: 10px;
+        }
+
+        .person-list ul li img {
+            width: 100px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .person-list ul li button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-container {
+            margin-top: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+
+        .search-container button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<header class="header">
+<a href="yamboly.html"><img src="carpeta1/Picture1.png" alt="logo"></a>
+  <nav  class="titulos">
+    <a href="yamboly.html">busqueda de personal
+    <a href="registros.html">registros</a>
+    <a href="documents.html">documentos SSOMA</a>
+    <a href="inventario.html">Inventario de EPP</a>
+    <a href="">Capacitaciones</a>
+    <a href="">formatos</a>
+    <a href="inspecciones">inspecciones</a>
+  </nav>
+</header>
+<body>
+    <h1>Capacitaciones SSOMA</h1>
+
+    <ol>
+        <li><a href="https://docs.google.com/forms/d/15MDjh21jw9tEIwihhInUnACI-HG2UPCVZ2Ea9Jw1eyk/prefill">Aspectos e impactos ambientales</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        
+    </ol>
+    
+</body>
+</html>

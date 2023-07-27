@@ -1,0 +1,22 @@
+body{background-color: pink;}
+
+
+img{width: 50px;
+
+}
+
+div{position: relative;
+    left: 550px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size:20px ;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+}
+p{
+    text-align: center;
+}

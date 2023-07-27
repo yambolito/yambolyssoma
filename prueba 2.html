@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Incidentes y Accidentes</title>
+    <style>
+           @page {
+            size: A4;
+            margin: 0;
+        }
+        html, body {
+            width: 210mm;
+            height: 297mm;
+            margin: 20px; /* Márgenes de 20 mm */
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .custom-button {
+            display: inline-block; /* Mostrar el botón en línea */
+        }
+        
+        /* Ocultar el botón de inserción de imagen solo en la impresión */
+        @media print {
+            .custom-button {
+                display: none;
+            }
+        }
+          /* Estilo para el botón */
+          .custom-button {
+            padding: 6px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .custom-textarea {
+            min-width: 100px; /* Ancho mínimo */
+            max-width: 400px; /* Ancho máximo */
+            min-height: 50px; /* Altura mínima */
+            max-height: 200px; /* Altura máxima */
+            resize: both; /* Permite redimensionar desde ambas esquinas */
+            overflow: auto; /* Muestra barras de desplazamiento si el contenido excede el tamaño */
+            border: 2px solid #ccc; /* Borde del textarea */
+            padding: 8px; /* Espaciado interno */
+            font-size: 16px; /* Tamaño de fuente */
+        }
+             .titulos a {
+      border: 1px solid transparent;
+      border-radius: 30px;
+      padding: 10px;
+      margin: 5px;
+      color: white;
+      text-decoration: none;
+      border-color: yellow;
+    }
+
+    .titulos a:hover {
+      background-color: yellow;
+      color: #ffffff;
+      border-color: yellow;
+    }
+    header{background-color: #15ebfa;}
+    img{
+      width: 10%;
+    }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        header img {
+            height: 80px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .header-info {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<header class="header">
+    <a href="yamboly.html"><img src="carpeta1/Picture1.png" alt="logo"></a>
+      <nav  class="titulos">
+        <a href="yamboly.html">Busqueda de personal
+        <a href="registros.html">Registros</a>
+        <a href="documents.html">Documentos SSOMA</a>
+        <a href="inventario.html">Inventario de EPP</a>
+        <a href="prueba 2.html">formato</a>
+      </nav>
+    </header>
+<body>
+  
+    <header>
+        <img src="carpeta1/Picture1.png" alt="Logo de la Empresa">
+        <h1>Registro de Incidentes y Accidentes</h1>
+    </header>
+    <div class="container">
+        <div class="header-info">
+            <p>Codigo: FO-SSOMA-SST-004</p>
+            <p>Version: 03</p>
+            <p>Inicio de Vigencia: 10/04/2023</p>
+        </div>
+        <table id="miTabla">
+            <tr>
+                <th colspan="2">N° REGISTRO <input type="number"></th>
+                <th colspan="6">REGISTRO DE ACCIDENTE / INCIDENTE DE TRABAJO</th>
+            </tr>
+            <tr>
+                <th colspan="8">1. DATOS DEL EMPLEADOR</th>
+                
+            </tr>
+            <tr>
+                <td colspan="1">Razón Social:</td>
+                <td colspan="1">RUC:</td>
+                <td colspan="2">Domicilio:</td>
+                <td colspan="1">Tipo de Actividad Económica:</td>
+                <td colspan="1">N° Trabajadores:</td>
+            </tr>
+            <!-- Opción para ingresar datos en la cuarta fila -->
+            <tr>
+                <td colspan="1"><input type="text" name="razon_social" placeholder="Ingrese la Razón Social"></td>
+                <td colspan="1"><input type="text" name="ruc" placeholder="Ingrese el RUC"></td>
+                <td colspan="2"><input type="text" size="50" name="domicilio" placeholder="Ingrese el Domicilio"></td>
+                <td colspan="3"><input type="text" name="actividad_economica" placeholder="Ingrese la Actividad Económica"></td>
+                <td colspan="1"><input type="number" name="num_trabajadores" placeholder="Ingrese el N° de Trabajadores"></td>
+            </tr>
+            <!-- Puedes agregar más filas para completar las 26 filas -->
+            <tr>
+                <th colspan="8">Complete solo en caso que las actividades del empleador sean consideradas de alto riesgo</th>
+            </tr>
+            <tr>
+                <td colspan="2">N° TRABAJADORES AFILIADOS AL SCTR</td>
+                <td colspan="3">N° DE TRABAJADORES NO AFILIADOS AL SCTR</td>
+                <td colspan="3">NOMBRE DE LA ASEGURADORA</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="number" name="TRABADORES SCTR" placeholder="Ingrese el N° de Trabajadores"></td>
+                <td colspan="3"><input type="number" name="SIN SCTR" placeholder="Ingrese el N° de Trabajadores"></td>
+                <td colspan="3"><input type="text" name="NOMBRE" placeholder="NOMBR DE ASEGURADORA"></td>
+            </tr>
+            <tr>
+                <th colspan="8">COMPLETAR SOLO SI SE TRATA DE SERVICIOS DE INTERMEDIACION O TERCERIZACION</th>
+            </tr>
+            <tr>
+                <td colspan="2">N° TRABAJADORES AFILIADOS AL SCTR</td>
+                <td colspan="3">N° DE TRABAJADORES NO AFILIADOS AL SCTR</td>
+                <td colspan="3">NOMBRE DE LA ASEGURADORA</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="number" name="TRABADORES SCTR" placeholder="Ingrese el N° de Trabajadores"></td>
+                <td colspan="3"><input type="number" name="SIN SCTR" placeholder="Ingrese el N° de Trabajadores"></td>
+                <td colspan="3"><input type="text" name="NOMBRE" placeholder="NOMBR DE ASEGURADORA"></td>
+            </tr>
+            <tr>
+                <th colspan="8">2. DATOS DEL TRABAJADOR</th>
+            </tr>
+            <tr>
+                <td colspan="4">APELLIDOS Y NOMBRES DEL TRABAJADOR ACCIDENTADO</td>
+                <td colspan="3">D.N.I</td>
+                <td colspan="1">EDAD</td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="text" size="100" name="datos trabajador" placeholder="ingrese datos"></td>
+                <td colspan="3"><input type="number" name="dni" placeholder="numero de dni"></td>
+                <td colspan="1"><input type="number" name="edad" placeholder="edad"></td>
+            </tr>
+            <tr>
+                <td colspan="0">AREA</td>
+                <td colspan="1">PUESTO DE TRABAJO</td>
+                <td colspan="1">ANTIGUEDAD EN EL EMPLEO</td>
+                <td colspan="1">SEXO F/M</td>
+                <td colspan="1">TURNO D/T/N</td>
+                <td colspan="1">TIPO DE CONTRATO</td>
+                <td colspan="1">TIEMPO DE EXPERIENCIA</td>
+                <td colspan="1">N° HORAS TRABAJADAS EN LA JORNADA</td>
+            </tr>
+            <tr>
+                <td colspan="1"><select name="text" id="">
+                    <option value="vacio"></option>
+                    <option value="camara">Camara</option>
+                    <option value="cal">Calidad</option>
+                    <option value="alm">Almacen</option>
+                    <option value="mant">Mantenimiento</option>
+                    <option value="lim">Limpieza</option>
+                    <option value="trans">Transporte</option>
+                    <option value="adm">Administrativo</option>
+                    <option value="seguridad">Seguridad</option>
+
+                </select>
+                </td>
+                <td colspan="1"><input type="text" name="dni" placeholder="numero de dni"></td>
+                <td colspan="1"><input type="text" name="edad" placeholder="edad"></td>
+                <td colspan="1"><select name="text" id=""><option value="vacio"></option><option value="woman">Mujer</option>
+                    <option value="man">Hombre</option></select></td>
+                <td colspan="1"><select name="text" id=""><option value="vacio"></option><option value="woman">D</option>
+                    <option value="man">T</option></select></td>
+                <td colspan="1"><input type="text" name="dni" placeholder="CONTRATO"></td>
+                <td colspan="1"><input type="number" name="edad" placeholder="AÑOS DE EXPERIENCIA"></td>
+                <td colspan="1"><input type="number" name="dni" placeholder="HORAS"></td>   
+            </tr>
+            <tr>
+                <th colspan="8">3. DATOS DEL  <SElect><option value="incidente">INCIDENTE</option><option value="accdidente">ACCIDENTE</option></SElect></th>
+            </tr>
+            <tr>
+                <th colspan="8">3.1 DATOS GENERALES</th>
+            </tr>
+            <tr>
+                <td colspan="2">FECHA Y HORA DE OCURRENCIA DEL INCIDENTE/ACCIDENTE</td>
+                <td colspan="2">FECHA DE INICIO DE INVESTIGACION </td>
+                <td colspan="4">LUGAR EXACTO DONDE OCURRIO EL ACCIDENTE/ INCIDENTE</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual = new Date().getFullYear();
+                        for (let i = añoActual; i <= añoActual + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="hora" id="hora">
+                    <!-- Generar opciones para las horas -->
+                    <script>
+                        for (let i = 0; i <= 23; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="minutos" id="minutos">
+                    <!-- Generar opciones para los minutos -->
+                    <script>
+                        for (let i = 0; i <= 59; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                </td>
+                <td colspan="2"><select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses2 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual2 = new Date().getFullYear();
+                        for (let i = añoActual; i <= añoActual + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="hora" id="hora">
+                    <!-- Generar opciones para las horas -->
+                    <script>
+                        for (let i = 0; i <= 23; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="minutos" id="minutos">
+                    <!-- Generar opciones para los minutos -->
+                    <script>
+                        for (let i = 0; i <= 59; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+            </td>
+            <td colspan="4">
+                <input type="text" size="100">
+            </td>
+            </tr>
+            <tr>
+                <td colspan="3">MARCA LA GRAVEDAD</td>
+                <td colspan="3">MARCA EL GRADO DEL ACCIDENTE INCAPACIENTE DE SER EL CASO</td>
+                <td colspan="1">N° DIAS DE DESCANSO MEDICO</td>
+                <td colspan="1">N° DE TRABAJADORES AFECTADOS</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+            incidente<input type="checkbox" name="elemento1" value="1">
+            incidente peligroso<input type="checkbox" name="elemento1" value="1">
+            casi accidente<input type="checkbox" name="elemento1" value="1">
+            ACCIDENTE<input type="checkbox" name="elemento1" value="1">
+            ACCIDENTE INCAPACIENTE<input type="checkbox" name="elemento1" value="1">
+            MORTAL<input type="checkbox" name="elemento1" value="1">           
+            </td>
+            <td colspan="3">
+                TOTAL TEMPORAL<input type="checkbox" name="elemento1" value="1">
+                PARCIAL TEMPORAL<input type="checkbox" name="elemento1" value="1">
+                PARCIAL PERMANENTE<input type="checkbox" name="elemento1" value="1">        
+            </td>
+            <td>
+                <input type="number" size="5" name="DIAS" placeholder="DIAS">          
+            </td>
+            <td>
+                <input type="number" size="5" name="TRABAJADORES" placeholder="CANTIDAD">          
+            </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    DESCRIBIR PARTE DEL CUERPO LESIONADO(DE SER EL CASO;)
+                </td>
+                <td colspan="4"><input type="text" size="80"></td>
+            </tr>
+            <tr>
+                <th colspan="8">3.2 DESCRIPCION DEL ACCIDENTE/INCIDENTE DE TRABAJO</th>
+            </tr>
+            <tr>
+                <td colspan="8"><p>Describa solo los hechos, no escriba informacion subjetiva que no pueda ser comprobada.</p>
+                    <p>Adjuntar;</p>
+                <ul>
+                    <li>Declaracion del afectado sobre el accidente de trabajo</li>
+                    <li>Declaracion de testigos(de ser el caso)</li>
+                    <li>Procedimiento, Planos, Registros entre otros que ayuden a la investigacion de ser el caso</li>
+                </ul></td>
+            </tr>
+            <tr>
+                <td colspan="8"> <textarea class="custom-input" placeholder="Escribe o arrastra aquí"></textarea></td>
+            </tr>
+            <tr>
+                <th colspan="8">3.3 DESCRIPCION DE LAS CAUSAS QUE ORIGINARON EL ACCIDENTE DE TRABAJO</th>
+            </tr>
+            <tr>
+                <td colspan="2">DAÑO O PERDIDA</td>
+                <td colspan="2"><SElect><option value="incidente">INCIDENTE</option><option value="accdidente">ACCIDENTE</option></SElect></td>
+                <td colspan="1">CAUSAS INMEDIATAS</td>
+                <td colspan="1">CAUSAS BASICAS</td>
+                <td colspan="2">FALTA DE CONTROL</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="text" height="500"></td>
+                <td colspan="2"><input type="text"></td>
+                <td colspan="1"><input type="text"></td>
+                <td colspan="1"><input type="text"></td>
+                <td colspan="2"><input type="text"></td>
+            </tr>
+            <tr>
+                <th colspan="8">3.4 Registro FOTOGRAFICO</th>
+            </tr>
+            <tr>
+                <td colspan="3" id="image-cell">
+                    <!-- Aquí se mostrará la imagen -->
+                </td>
+                <td colspan="3" id="image-cell2">
+                    <!-- Aquí se mostrará la imagen -->
+                </td>
+                <td colspan="2" id="image-cell3">
+                    <!-- Aquí se mostrará la imagen -->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <!-- Botón para insertar imágenes -->
+                    <input type="file" id="image-input" style="display: none;">
+                    <button class="custom-button" onclick="document.getElementById('image-input').click()">Insertar Imagen</button>
+                </td>
+                <td colspan="3">
+                    <!-- Botón para insertar imágenes -->
+                    <input type="file" id="image-input2" style="display: none;">
+                    <button class="custom-button" onclick="document.getElementById('image-input2').click()">Insertar Imagen</button>
+                </td>
+                <td colspan="2">
+                    <!-- Botón para insertar imágenes -->
+                    <input type="file" id="image-input3" style="display: none;">
+                    <button class="custom-button" onclick="document.getElementById('image-input3').click()">Insertar Imagen</button>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="8">4. MEDIDAS PREVENTIVAS O CORRECTIVAS</th>
+            </tr>
+            <tr>
+                <td colspan="3">DESCRIPCION DE LA MEDIDA CORRECTIVA</td>
+                <td colspan="2">RESPONSABLE</td>
+                <td colspan="1">FECHA DE EJECUCION</td>
+                <td colspan="2">ESTADO</td>
+            </tr>
+            <tr>
+                <td colspan="3">1.<input type="text" size="60"></td>
+                <td colspan="2"><input type="text"></td>
+                <td colspan="1"><select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses4 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses4.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual4 = new Date().getFullYear();
+                        for (let i = añoActual4; i <= añoActual4 + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select></td>
+                <td colspan="2"><select name="estado" id=""><option value="nada"></option><option value="REALIZADO">REALIZADA</option><option value="pen">PENDIENTE</option><option value="EN eje">EN EJECUCION</option></select></td>
+            </tr>
+            <tr>
+                <td colspan="3">2.<input type="text" size="60"></td>
+                <td colspan="2"><input type="text"></td>
+                <td colspan="1"><select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses5 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses5.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual5 = new Date().getFullYear();
+                        for (let i = añoActual5; i <= añoActual5 + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select></td>
+                <td colspan="2"><select name="estado" id=""><option value="nada"></option><option value="REALIZADO">REALIZADA</option><option value="pen">PENDIENTE</option><option value="EN eje">EN EJECUCION</option></select></td>
+            </tr>
+            <tr>
+                <td colspan="3">3.<input type="text" size="60"></td>
+                <td colspan="2"><input type="text"></td>
+                <td colspan="1"><select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses6 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses6.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual6 = new Date().getFullYear();
+                        for (let i = añoActual6; i <= añoActual6 + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select></td>
+                <td colspan="2"><select name="estado" id=""><option value="nada"></option><option value="REALIZADO">REALIZADA</option><option value="pen">PENDIENTE</option><option value="EN eje">EN EJECUCION</option></select></td>
+            </tr>
+            <tr>
+                <th colspan="8">5.RESPONSABLES DEL REGISTRO DE LA INVESTIGACION</th>
+            </tr>
+            <tr>
+                <td colspan="3">Nombre:<input type="text" size="40"></td>
+                <td colspan="2">Cargo:<input type="text"></td>
+                <td colspan="1">Fecha:<select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses7 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses7.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual7 = new Date().getFullYear();
+                        for (let i = añoActual7; i <= añoActual7 + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select> </td>
+                <td colspan="2" id="image-cell4" id>
+                    <!-- Aquí se mostrará la imagen -->
+                    <input type="file" id="image-input4" style="display: none;">
+                    <button class="custom-button" onclick="document.getElementById('image-input4').click()">Insertar Firma</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Nombre:<input type="text" size="40"></td>
+                <td colspan="2">Cargo:<input type="text"></td>
+                <td colspan="1">Fecha:<select name="dia" id="dia">
+                    <!-- Generar opciones para los días -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write('<option value="' + i + '">' + (i < 10 ? '0' + i : i) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="mes" id="mes">
+                    <!-- Generar opciones para los meses -->
+                    <script>
+                        const meses8 = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                        for (let i = 0; i < meses8.length; i++) {
+                            document.write('<option value="' + (i + 1) + '">' + (i + 1 < 10 ? '0' + (i + 1) : (i + 1)) + '</option>');
+                        }
+                    </script>
+                </select>
+                <select name="año" id="año">
+                    <!-- Generar opciones para los años -->
+                    <script>
+                        const añoActual8 = new Date().getFullYear();
+                        for (let i = añoActual8; i <= añoActual8 + 28; i++) {
+                            document.write('<option value="' + i + '">' + i + '</option>');
+                        }
+                    </script>
+                </select> </td>
+                <td colspan="2" id="image-cell5" id>
+                    <!-- Aquí se mostrará la imagen -->
+                    <input type="file" id="image-input5" style="display: none;">
+                    <button class="custom-button" onclick="document.getElementById('image-input5').click()">Insertar Firma</button>
+                </td>
+            </tr>
+           
+            
+
+
+
+            
+            <!-- Agregar más filas aquí -->
+        </table>
+        <button id="btnGuardar" onclick="guardarInformacion()">Guardar</button>
+
+<!-- Botón para cargar -->
+<button id="btnCargar" onclick="cargarInformacion()">Cargar</button>
+
+<ol id="listaGuardados"></ol>
+
+
+  
+    </div>
+</body>
+<script> // Obtener el elemento del input
+    const input = document.querySelector('.custom-input');
+
+    // Ajustar la altura del input cuando se ingresa texto
+    input.addEventListener('input', () => {
+        input.style.height = 'auto'; // Restablecer la altura para medir el contenido
+        input.style.height = `${input.scrollHeight}px`; // Establecer la altura según el contenido
+    });
+      // Obtener el elemento del input de imagen
+      const imageInput = document.getElementById('image-input');
+
+// Escuchar el evento de cambio en el input de imagen
+imageInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const imageDataUrl = reader.result;
+            // Mostrar la imagen en la celda
+            document.getElementById('image-cell').innerHTML = `<img src="${imageDataUrl}" width="500" height="150">`;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+const imageInput2 = document.getElementById('image-input2');
+
+// Escuchar el evento de cambio en el input de imagen
+imageInput2.addEventListener('change', (event) => {
+    const file2 = event.target.files[0];
+    if (file2) {
+        const reader2 = new FileReader();
+        reader2.onload = function() {
+            const imageDataUrl2 = reader2.result;
+            // Mostrar la imagen en la celda
+            document.getElementById('image-cell2').innerHTML = `<img src="${imageDataUrl2}" width="500" height="150">`;
+        }
+        reader2.readAsDataURL(file2);
+    }
+});
+const imageInput3 = document.getElementById('image-input3');
+
+imageInput3.addEventListener('change', (event) => {
+    const file3 = event.target.files[0];
+    if (file3) {
+        const reader3 = new FileReader();
+        reader3.onload = function() {
+            const imageDataUrl3 = reader3.result;
+            // Mostrar la imagen en la celda
+            document.getElementById('image-cell3').innerHTML = `<img src="${imageDataUrl3}" width="500" height="150">`;
+        }
+        reader3.readAsDataURL(file3);
+    }
+});
+
+const imageInput4 = document.getElementById('image-input4');
+
+imageInput4.addEventListener('change', (event) => {
+    const file4 = event.target.files[0];
+    if (file4) {
+        const reader4 = new FileReader();
+        reader4.onload = function() {
+            const imageDataUrl4 = reader4.result;
+            // Mostrar la imagen en la celda
+            document.getElementById('image-cell4').innerHTML = `<img src="${imageDataUrl4}" width="500" height="150">`;
+        }
+        reader4.readAsDataURL(file4);
+    }
+});
+
+const imageInput5 = document.getElementById('image-input5');
+
+imageInput5.addEventListener('change', (event) => {
+    const file5 = event.target.files[0];
+    if (file5) {
+        const reader5 = new FileReader();
+        reader5.onload = function() {
+            const imageDataUrl5 = reader4.result;
+            // Mostrar la imagen en la celda
+            document.getElementById('image-cell4').innerHTML = `<img src="${imageDataUrl5}" width="500" height="150">`;
+        }
+        reader5.readAsDataURL(file5);
+    }
+});
+    
+function guardarInformacion() {
+    // Obtener los valores ingresados por el usuario
+    const razonSocial = document.getElementsByName('razon_social')[0].value;
+    const ruc = document.getElementsByName('ruc')[0].value;
+    // Obtener más valores de los campos y checkboxes aquí...
+
+    // Crear un nuevo elemento de lista (<li>) para mostrar la información guardada
+    const nuevoElemento = document.createElement('li');
+
+    // Construir el texto que se mostrará en el elemento de lista
+    const textoLista = `Nombre del archivo: ${nombreArchivo}, Fecha: ${fecha}, Razon Social: ${razonSocial}, RUC: ${ruc}, ...`;
+
+    // Agregar el texto al elemento de lista
+    nuevoElemento.textContent = textoLista;
+
+    // Agregar el nuevo elemento de lista a la lista numerada
+    const listaGuardados = document.getElementById('listaGuardados');
+    listaGuardados.appendChild(nuevoElemento);
+
+    // Restablecer los campos y checkboxes si es necesario
+    // document.getElementById('miFormulario').reset();
+  }
+
+  function cargarInformacion() {
+    // Aquí escribirás el código para cargar la información desde la lista
+    // y rellenar los campos y checkboxes de la tabla.
+  }
+
+    </script>
+</html>

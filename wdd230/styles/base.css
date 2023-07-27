@@ -1,0 +1,123 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Sansita", sans-serif;
+}
+
+/* mobile **************************/
+header {
+	background-color: #bbb;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+h1{
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+  }
+  
+  hr {
+    width: 50%;
+    margin: 10px 0;
+    position: relative;
+    left: 25%; /* Ajuste de posición para centrar con respecto al h2 */
+  }
+
+
+h1 {
+	font-size: 2rem;
+}
+
+nav {
+	background-color: #36454f;
+	margin: 0 auto;
+	
+}
+
+img{
+    width: 60px;
+    
+}
+nav ul {
+	list-style-type: none;
+    
+}
+nav a {
+	display: block;
+	color: #fff;
+	text-align: center;
+	padding: 1rem;
+	text-decoration: none;
+}
+
+nav a:hover {
+	border: 1px solid #fff;
+}
+
+.active {
+	color: yellow;
+}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Agregamos flex-wrap para que las cards se envuelvan cuando no quepan en una sola fila */
+    justify-content: center; /* Centramos horizontalmente los elementos flex */
+    gap: 20px; /* Añadimos espaciado entre las tarjetas */
+  }
+  
+  .card {
+    flex: 0 0 calc(50% - 20px); /* Cada tarjeta ocupa el 50% del espacio disponible en la fila */
+    padding: 0px;
+    border-radius: 20px;
+    background-color: #E0E8D6;
+    width: 330px;
+  }
+  
+  h3 {
+    background-color: #6BBF75;
+    padding: 10px 20px;
+    border-radius: 20px 20px 0px 0px;
+    margin: 0;
+    text-align: center;
+    color: white;
+  }
+  
+  .card ul {
+    padding: 20px;
+    list-style-type: none;
+  }
+  
+  .card li {
+    padding: 5px 0;
+  }
+ 
+  @media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Cambiamos a columna para mostrar las cards una debajo de la otra en dispositivos móviles */
+      }
+  
+    /* Ajusta el ancho de las tarjetas para que ocupen todo el ancho de la pantalla */
+    .card {
+      width: 100%;
+    }
+    h2 {
+        font-size: 1.5rem; /* Tamaño de fuente más pequeño para móviles */
+      }
+    
+      hr {
+        width: 40%; /* Ancho del hr más pequeño para móviles */
+      }
+  }
+ 
+
+
+

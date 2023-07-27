@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+    }
+
+    #birthdayMessage {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hoy el cumpleaños de:</h1>
+  <img id="personImage" src="" alt="Foto de la persona">
+  <div id="birthdayMessage">
+    <p>Feliz cumpleaños <span id="personName"></span>,</p>
+    <p>te deseamos lo mejor,</p>
+    <p>la familia de Yamboly es nuestra más sincera felicidad.</p>
+  </div>
+
+  <script>
+    // Función para obtener la fecha actual en formato "YYYY-MM-DD"
+    function getCurrentDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Función para obtener el nombre y la foto de la persona que cumple años hoy
+    function showBirthdayPerson() {
+      fetch('personas.json')
+        .then(response => response.json())
+        .then(data => {
+          const currentDate = getCurrentDate();
+          const birthdayPerson = data.personas.find(person => person.fechaNacimiento === currentDate);
+
+          if (birthdayPerson) {
+            const personNameElement = document.getElementById('personName');
+            const personImageElement = document.getElementById('personImage');
+
+            personNameElement.textContent = birthdayPerson.nombre;
+            personImageElement.src = birthdayPerson.foto;
+            personImageElement.alt = `Foto de ${birthdayPerson.nombre}`;
+          } else {
+            const birthdayMessage = document.getElementById('birthdayMessage');
+            birthdayMessage.innerHTML = '<p>No hay cumpleaños hoy. ¡Vuelve mañana!</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error al cargar los datos:', error);
+        });
+    }
+
+    showBirthdayPerson();
+  </script>
+</body>
+</html>
