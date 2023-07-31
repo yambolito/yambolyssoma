@@ -8,11 +8,23 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-color: #f0f0f0;
+      background-image: url('carpeta1/fiesta.jpg');
+      
     }
 
     h1 {
-      color: #333;
+      color: #000000;
+    }
+
+    h2 {
+      color: #007bff;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #000000;
     }
 
     img {
@@ -22,55 +34,60 @@
       margin: 20px auto;
       display: block;
     }
-
-    #birthdayMessage {
-      font-size: 20px;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
-  <h1>Hoy el cumpleaños de:</h1>
+  <h1>Hoy es el cumpleaños de:</h1>
   <img id="personImage" src="" alt="Foto de la persona">
-  <div id="birthdayMessage">
-    <p>Feliz cumpleaños <span id="personName"></span>,</p>
-    <p>te deseamos lo mejor,</p>
-    <p>la familia de Yamboly es nuestra más sincera felicidad.</p>
-  </div>
+  <h2 id="personName"></h2>
+  <p id="birthdayMessage"></p>
 
   <script>
-    // Función para obtener la fecha actual en formato "YYYY-MM-DD"
+    const personas = [
+      {
+        "nombre": "Ana Martinez",
+        "fechaNacimiento": "1990-07-31",
+        "foto": "carpeta1/torta.png",
+        "mensaje": "¡Feliz cumpleaños Ana! Que este día esté lleno de alegría y bendiciones para ti.",
+      },
+      {
+        "nombre": "Pedro Gómez",
+        "fechaNacimiento": "1990-07-27",
+        "foto": "carpeta1/pedro.jpg",
+        "mensaje": "¡Feliz cumpleaños Pedro! Que todos tus sueños se hagan realidad en este nuevo año de vida.",
+      },
+    ];
+
     function getCurrentDate() {
       const today = new Date();
-      const year = today.getFullYear();
       const month = String(today.getMonth() + 1).padStart(2, '0');
       const day = String(today.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
+      return `${month}-${day}`;
     }
 
-    // Función para obtener el nombre y la foto de la persona que cumple años hoy
     function showBirthdayPerson() {
-      fetch('personas.json')
-        .then(response => response.json())
-        .then(data => {
-          const currentDate = getCurrentDate();
-          const birthdayPerson = data.personas.find(person => person.fechaNacimiento === currentDate);
+      const currentDate = getCurrentDate();
+      const birthdayPeople = personas.filter(person => {
+        const birthday = person.fechaNacimiento.slice(5);
+        return birthday === currentDate;
+      });
 
-          if (birthdayPerson) {
-            const personNameElement = document.getElementById('personName');
-            const personImageElement = document.getElementById('personImage');
+      if (birthdayPeople.length > 0) {
+        const randomIndex = Math.floor(Math.random() * birthdayPeople.length);
+        const birthdayPerson = birthdayPeople[randomIndex];
 
-            personNameElement.textContent = birthdayPerson.nombre;
-            personImageElement.src = birthdayPerson.foto;
-            personImageElement.alt = `Foto de ${birthdayPerson.nombre}`;
-          } else {
-            const birthdayMessage = document.getElementById('birthdayMessage');
-            birthdayMessage.innerHTML = '<p>No hay cumpleaños hoy. ¡Vuelve mañana!</p>';
-          }
-        })
-        .catch(error => {
-          console.error('Error al cargar los datos:', error);
-        });
+        const personNameElement = document.getElementById('personName');
+        const personImageElement = document.getElementById('personImage');
+        const birthdayMessageElement = document.getElementById('birthdayMessage');
+
+        personNameElement.textContent = birthdayPerson.nombre;
+        personImageElement.src = birthdayPerson.foto;
+        personImageElement.alt = `Foto de ${birthdayPerson.nombre}`;
+        birthdayMessageElement.textContent = birthdayPerson.mensaje;
+      } else {
+        const personNameElement = document.getElementById('personName');
+        personNameElement.textContent = "Nadie";
+      }
     }
 
     showBirthdayPerson();

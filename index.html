@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('carpeta1/fiesta.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .slider-container {
+      max-width: 400px;
+      margin: 0 auto;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .slider-content {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .slider-item {
+      flex: 0 0 100%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      margin: 10px auto;
+    }
+
+    h1 {
+      color: #000000;
+    }
+
+    h2 {
+      color: #007bff;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hoy es el cumpleaños de:</h1>
+  <div class="slider-container">
+    <div class="slider-content" id="slider">
+      <!-- Slider items will be dynamically generated here -->
+    </div>
+  </div>
+  <h2 id="personName"></h2>
+  <p id="birthdayMessage"></p>
+
+  <script>
+    const personas = [
+      {
+        "nombre": "Ana Martinez",
+        "fechaNacimiento": "1990-07-31",
+        "foto": "carpeta1/mickey.jpg",
+        "mensaje": "¡Feliz cumpleaños Ana! Que este día esté lleno de alegría y bendiciones para ti.",
+      },
+      {
+        "nombre": "Pedro Gómez",
+        "fechaNacimiento": "1990-07-31",
+        "foto": "carpeta1/donald.png",
+        "mensaje": "¡Feliz cumpleaños Pedro! Que todos tus sueños se hagan realidad en este nuevo año de vida.",
+      },
+      // Agrega más personas con fechas de cumpleaños iguales aquí
+      {
+        "nombre": "María López",
+        "fechaNacimiento": "1990-07-27",
+        "foto": "carpeta1/maria.jpg",
+        "mensaje": "¡Feliz cumpleaños María! Que tengas un día lleno de felicidad y amor.",
+      },
+    ];
+
+    function getCurrentDate() {
+      const today = new Date();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${month}-${day}`;
+    }
+
+    function showBirthdayPeople() {
+      const currentDate = getCurrentDate();
+      const birthdayPeople = personas.filter(person => {
+        const birthday = person.fechaNacimiento.slice(5);
+        return birthday === currentDate;
+      });
+
+      if (birthdayPeople.length > 0) {
+        const sliderContent = document.getElementById('slider');
+        sliderContent.innerHTML = ''; // Limpiar el contenido actual del slider
+
+        birthdayPeople.forEach(birthdayPerson => {
+          const sliderItem = document.createElement('div');
+          sliderItem.className = 'slider-item';
+
+          const image = document.createElement('img');
+          image.src = birthdayPerson.foto;
+          image.alt = `Foto de ${birthdayPerson.nombre}`;
+
+          const name = document.createElement('h2');
+          name.textContent = birthdayPerson.nombre;
+
+          const message = document.createElement('p');
+          message.textContent = birthdayPerson.mensaje;
+
+          sliderItem.appendChild(image);
+          sliderItem.appendChild(name);
+          sliderItem.appendChild(message);
+          sliderContent.appendChild(sliderItem);
+        });
+
+        const personNameElement = document.getElementById('personName');
+        const birthdayMessageElement = document.getElementById('birthdayMessage');
+
+        personNameElement.textContent = ''; // Limpiar el mensaje anterior si lo hubiera
+        birthdayMessageElement.textContent = ''; // Limpiar el mensaje anterior si lo hubiera
+
+        let currentSlide = 0;
+        const sliderItems = document.querySelectorAll('.slider-item');
+
+        setInterval(() => {
+          sliderItems[currentSlide].style.display = 'none';
+          currentSlide = (currentSlide + 1) % sliderItems.length;
+          sliderItems[currentSlide].style.display = 'block';
+        }, 3000); // Cambiar cada 3 segundos
+      } else {
+        const personNameElement = document.getElementById('personName');
+        personNameElement.textContent = "Nadie";
+
+        const birthdayMessageElement = document.getElementById('birthdayMessage');
+        birthdayMessageElement.textContent = "No hay cumpleaños hoy. ¡Vuelve mañana!";
+      }
+    }
+
+    showBirthdayPeople();
+  </script>
+</body>
+</html>
