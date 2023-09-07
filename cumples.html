@@ -52,9 +52,13 @@
       margin-top: 10px;
       color: #000000;
     }
+    #imalog{
+      width: 20%;
+    }
   </style>
 </head>
 <body>
+  <img id="imalog" src="carpeta1/Picture1.png" alt="yamboly">
   <audio id="birthdayAudio" src="carpeta1/CUMPLEAÑOS.mp3" preload="auto" loop></audio>
   <h1>Hoy es el cumpleaños de:</h1>
   <div class="slider-container">
@@ -67,199 +71,273 @@
   <button onclick="playBirthdayMusic()">¡Haz clic aqui! 🥳</button>
 
   <script>
-    const personas = [
-  {
-    "nombre": "Henry William Ramirez Vasquez",
-    "fechaNacimiento": "1990-08-03",
-    "foto": "carpeta1/henry.jpg",
-    "mensaje": "¡Feliz cumpleaños Henry William! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Maria Isabel Huaman Machado",
-    "fechaNacimiento": "1995-08-03",
-    "foto": "carpeta1/maria.jpg",
-    "mensaje": "¡Feliz cumpleaños Maria Isabel! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Oscar Daniel Carpio Rodriguez",
-    "fechaNacimiento": "1987-08-06",
-    "foto": "carpeta1/oscar.jpg",
-    "mensaje": "¡Feliz cumpleaños Oscar Daniel! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Wilmer Quiroz Yahuarcani",
-    "fechaNacimiento": "1992-08-06",
-    "foto": "carpeta1/wilmer.jpg",
-    "mensaje": "¡Feliz cumpleaños Wilmer! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Elar Zurita Ojeda",
-    "fechaNacimiento": "1985-08-11",
-    "foto": "carpeta1/elar.jpg",
-    "mensaje": "¡Feliz cumpleaños Elar! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Alex Joel Villegas Vera",
-    "fechaNacimiento": "1993-08-12",
-    "foto": "carpeta1/alex.jpg",
-    "mensaje": "¡Feliz cumpleaños Alex Joel! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Aquiles Lopez Rodriguez",
-    "fechaNacimiento": "1988-08-12",
-    "foto": "carpeta1/aquiles.jpg",
-    "mensaje": "¡Feliz cumpleaños Aquiles! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Zaiduby Carolina Alastre Sanchez",
-    "fechaNacimiento": "1990-08-13",
-    "foto": "carpeta1/zaiduby.jpg",
-    "mensaje": "¡Feliz cumpleaños Zaiduby Carolina! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Andrea Cecilia Carrion Hinostroza",
-    "fechaNacimiento": "1991-08-14",
-    "foto": "carpeta1/andrea.jpg",
-    "mensaje": "¡Feliz cumpleaños Andrea Cecilia! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Doris Raquel Sanchez Lopez",
-    "fechaNacimiento": "1986-08-14",
-    "foto": "carpeta1/doris.jpg",
-    "mensaje": "¡Feliz cumpleaños Doris Raquel! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Cristian Isuiza Sinarahua",
-    "fechaNacimiento": "1994-08-14",
-    "foto": "carpeta1/cristian.jpg",
-    "mensaje": "¡Feliz cumpleaños Cristian! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Jose Lelis Galindo Abellaneda",
-    "fechaNacimiento": "1989-08-14",
-    "foto": "carpeta1/jose.jpg",
-    "mensaje": "¡Feliz cumpleaños Jose Lelis! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Juan Gabriel Zapata Pulache",
-    "fechaNacimiento": "1996-08-15",
-    "foto": "carpeta1/juan.jpg",
-    "mensaje": "¡Feliz cumpleaños Juan Gabriel! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Luis Oswaldo Ferre Libaque",
-    "fechaNacimiento": "1992-08-17",
-    "foto": "carpeta1/luis.jpg",
-    "mensaje": "¡Feliz cumpleaños Luis Oswaldo! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Jean Pierre Enrique Escajadillo Ayasta",
-    "fechaNacimiento": "1993-08-17",
-    "foto": "carpeta1/jean.jpg",
-    "mensaje": "¡Feliz cumpleaños Jean Pierre Enrique! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Jorge Dacio Maldonado Palomino",
-    "fechaNacimiento": "1990-08-20",
-    "foto": "carpeta1/jorge.jpg",
-    "mensaje": "¡Feliz cumpleaños Jorge Dacio! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Rosa Cardenas Pomataylla",
-    "fechaNacimiento": "1995-08-21",
-    "foto": "carpeta1/rosa.jpg",
-    "mensaje": "¡Feliz cumpleaños Rosa! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Jimmy Abel Leon Chauca",
-    "fechaNacimiento": "1991-08-23",
-    "foto": "carpeta1/jimmy.jpg",
-    "mensaje": "¡Feliz cumpleaños Jimmy Abel! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Nelson Linares Perez",
-    "fechaNacimiento": "1994-08-23",
-    "foto": "carpeta1/nelson.jpg",
-    "mensaje": "¡Feliz cumpleaños Nelson! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Rosario Valverde Arirama",
-    "fechaNacimiento": "1986-08-23",
-    "foto": "carpeta1/rosario.jpg",
-    "mensaje": "¡Feliz cumpleaños Rosario! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Ruth Lucero Chimoven Sanchez",
-    "fechaNacimiento": "1993-08-24",
-    "foto": "carpeta1/ruth.jpg",
-    "mensaje": "¡Feliz cumpleaños Ruth Lucero! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Fernando Alex Torres Reynoso",
-    "fechaNacimiento": "1990-08-24",
-    "foto": "carpeta1/fernando.jpg",
-    "mensaje": "¡Feliz cumpleaños Fernando Alex! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Pablo Prudencio Manrique Campos",
-    "fechaNacimiento": "1992-08-24",
-    "foto": "carpeta1/pablo.jpg",
-    "mensaje": "¡Feliz cumpleaños Pablo Prudencio! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Frank Lee Durand Prado",
-    "fechaNacimiento": "1989-08-25",
-    "foto": "carpeta1/frank.jpg",
-    "mensaje": "¡Feliz cumpleaños Frank Lee! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Carol Magali Pintado Huamani",
-    "fechaNacimiento": "1994-08-26",
-    "foto": "carpeta1/carol.jpg",
-    "mensaje": "¡Feliz cumpleaños Carol Magali! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Dora Alejandrina Rodriguez Carbajal",
-    "fechaNacimiento": "1985-08-26",
-    "foto": "carpeta1/dora.jpg",
-    "mensaje": "¡Feliz cumpleaños Dora Alejandrina! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Alex Sacha Ramos",
-    "fechaNacimiento": "1991-08-28",
-    "foto": "carpeta1/alex_sacha.jpg",
-    "mensaje": "¡Feliz cumpleaños Alex Sacha! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Juan Jose Romero Viru",
-    "fechaNacimiento": "1993-08-29",
-    "foto": "carpeta1/juan_jose.jpg",
-    "mensaje": "¡Feliz cumpleaños Juan Jose! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Luis Alberto Sanchez Huaman",
-    "fechaNacimiento": "1988-08-29",
-    "foto": "carpeta1/luis_alberto.jpg",
-    "mensaje": "¡Feliz cumpleaños Luis Alberto! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Odilo Darwin Fernandez Del Castillo",
-    "fechaNacimiento": "1990-08-29",
-    "foto": "carpeta1/odilo.jpg",
-    "mensaje": "¡Feliz cumpleaños Odilo Darwin! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Cesar Augusto Estrada Salcedo",
-    "fechaNacimiento": "1987-08-29",
-    "foto": "carpeta1/cesar.jpg",
-    "mensaje": "¡Feliz cumpleaños Cesar Augusto! Que este día esté lleno de alegría y bendiciones para ti."
-  },
-  {
-    "nombre": "Fredy Ojanama Vilchez",
-    "fechaNacimiento": "1996-08-29",
-    "foto": "carpeta1/fredy.jpg",
-    "mensaje": "¡Feliz cumpleaños Fredy! Que este día esté lleno de alegría y bendiciones para ti."
-  }
+    const personas =[
+    {
+        "nombre": "Jhan Marco Junco Guzman",
+        "fechaNacimiento": "01-Set",
+        "foto": "carpeta1/jhan_marco.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Jhan Marco! Que este nuevo año te traiga muchas alegrías y éxitos en Producción.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Kilder Perez Pinillos",
+        "fechaNacimiento": "01-Set",
+        "foto": "carpeta1/kilder.jpg",
+        "mensaje": "¡Feliz cumpleaños, Kilder! Te deseamos un día lleno de felicidad en Tarapoto.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Claudia Yudyth Limas Cesar",
+        "fechaNacimiento": "02-Set",
+        "foto": "carpeta1/claudia_yudyth.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Claudia Yudyth! Esperamos que tengas un año lleno de éxitos en Producción.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Gilmer Calderon Caro",
+        "fechaNacimiento": "04-Set",
+        "foto": "carpeta1/gilmer.jpg",
+        "mensaje": "¡Feliz cumpleaños, Gilmer! Que disfrutes de un maravilloso día en Chiclayo.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Jose Yhoyber Ventura Ventura",
+        "fechaNacimiento": "05-Set",
+        "foto": "carpeta1/jose_yhoyber.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Jose Yhoyber! Te deseamos un gran día como camarero.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Eduardo Laurente Romero",
+        "fechaNacimiento": "06-Set",
+        "foto": "carpeta1/eduardo.jpg",
+        "mensaje": "¡Feliz cumpleaños, Eduardo! Que este año en Producción esté lleno de éxitos para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Shamara Alexandra Venegas Leon",
+        "fechaNacimiento": "1987-09-07",
+        "foto": "carpeta1/shamara.jpeg",
+        "mensaje": "¡Feliz día de cumpleaños, Shamara Alexandra! Esperamos que tengas un maravilloso día de parte de la familia de Yamboly.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Joel Vargas Vargas",
+        "fechaNacimiento": "08-Set",
+        "foto": "carpeta1/joel.jpg",
+        "mensaje": "¡Feliz cumpleaños, Joel! Te deseamos un año lleno de éxitos en Transporte.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Rosa Asencio Cangahuala",
+        "fechaNacimiento": "09-Set",
+        "foto": "carpeta1/rosa.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Rosa! Que este año en ADM esté lleno de alegrías para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Juan Jose Rojas Mena",
+        "fechaNacimiento": "09-Set",
+        "foto": "carpeta1/juan_jose.jpg",
+        "mensaje": "¡Feliz cumpleaños, Juan Jose! Te deseamos mucho éxito en Producción este año.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Alexander Helton Chagua Alvarez",
+        "fechaNacimiento": "10-Set",
+        "foto": "carpeta1/alexander_helton.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Alexander Helton! Que tengas un año lleno de seguridad en SST.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Pio Manuel Torres Diaz",
+        "fechaNacimiento": "10-Set",
+        "foto": "carpeta1/pio_manuel.jpg",
+        "mensaje": "¡Feliz cumpleaños, Pio Manuel! Te deseamos mucho éxito en Transporte este año.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Rudy Quispe Titto",
+        "fechaNacimiento": "12-Set",
+        "foto": "carpeta1/rudy.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Rudy! Que tengas un año lleno de éxitos en Transporte.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Laura Victoria Aquise Pillaca",
+        "fechaNacimiento": "13-Set",
+        "foto": "carpeta1/laura_victoria.jpg",
+        "mensaje": "¡Feliz cumpleaños, Laura Victoria! Que tengas un año lleno de calidad en tu vida.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Nory Sacha Bastidas",
+        "fechaNacimiento": "13-Set",
+        "foto": "carpeta1/nory.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Nory! Te deseamos un año lleno de éxitos en ADM.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Frank Dennis Pichis Meza",
+        "fechaNacimiento": "13-Set",
+        "foto": "carpeta1/frank_dennis.jpg",
+        "mensaje": "¡Feliz cumpleaños, Frank Dennis! Que este año en Moyobamba sea increíble para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Darwin William Bernilla Quispe",
+        "fechaNacimiento": "14-Set",
+        "foto": "carpeta1/darwin_william.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Darwin William! Te deseamos mucho éxito en Producción.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Wendy Alisson Limaylla Martinez",
+        "fechaNacimiento": "16-Set",
+        "foto": "carpeta1/wendy_alisson.jpg",
+        "mensaje": "¡Feliz cumpleaños, Wendy Alisson! Que este año en Producción sea grandioso para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Darwin Omar Cervera Sanchez",
+        "fechaNacimiento": "18-Set",
+        "foto": "carpeta1/darwin_omar.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Darwin Omar! Te deseamos mucho éxito en Chiclayo.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Jorge Luis Castro Olivera",
+        "fechaNacimiento": "18-Set",
+        "foto": "carpeta1/jorge_luis.jpg",
+        "mensaje": "¡Feliz cumpleaños, Jorge Luis! Que este año en Producción esté lleno de éxitos para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "David Hipolito Soto Escobar",
+        "fechaNacimiento": "19-Set",
+        "foto": "carpeta1/david_hipolito.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, David Hipolito! Te deseamos mucho éxito en Producción.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Maritza Olarte Condori",
+        "fechaNacimiento": "19-Set",
+        "foto": "carpeta1/maritza.jpg",
+        "mensaje": "¡Feliz cumpleaños, Maritza! Que este año en Producción esté lleno de alegrías para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Briggitte Sonia Vallenas Valverde",
+        "fechaNacimiento": "20-Set",
+        "foto": "carpeta1/briggitte_sonia.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Briggitte Sonia! Te deseamos mucho éxito en Producción.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Julio Cesar Gutierrez Tanta",
+        "fechaNacimiento": "21-Set",
+        "foto": "carpeta1/julio_cesar.jpg",
+        "mensaje": "¡Feliz cumpleaños, Julio Cesar! Que este año en Vigilancia esté lleno de alegrías para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Lorenzo Daniel Pacaya Oliveira",
+        "fechaNacimiento": "21-Set",
+        "foto": "carpeta1/lorenzo_daniel.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Lorenzo Daniel! Te deseamos un maravilloso día en Pucallpa.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Jose Edgar Calderon Becerra",
+        "fechaNacimiento": "22-Set",
+        "foto": "carpeta1/jose_edgar.jpg",
+        "mensaje": "¡Feliz cumpleaños, Jose Edgar! Que este año en Chiclayo esté lleno de éxitos para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Leoncio Condorhuaman Estrada",
+        "fechaNacimiento": "23-Set",
+        "foto": "carpeta1/leoncio.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Leoncio! Te deseamos mucho éxito en Mantenimiento.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Taty Estefany Torres Vilchez",
+        "fechaNacimiento": "23-Set",
+        "foto": "carpeta1/taty_estefany.jpg",
+        "mensaje": "¡Feliz cumpleaños, Taty Estefany! Esperamos que tengas un año maravilloso en Tarapoto.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Jefferson Jair Silupu Leon",
+        "fechaNacimiento": "24-Set",
+        "foto": "carpeta1/jefferson_jair.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Jefferson Jair! Te deseamos mucho éxito en Producción este año.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Jimena Mercedes Quispe Huanca",
+        "fechaNacimiento": "24-Set",
+        "foto": "carpeta1/jimena_mercedes.jpg",
+        "mensaje": "¡Feliz cumpleaños, Jimena Mercedes! Que este año en Producción esté lleno de alegrías para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Hilario Chavez Carbajal",
+        "fechaNacimiento": "25-Set",
+        "foto": "carpeta1/hilario.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Hilario! Te deseamos mucho éxito en Transporte.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Mirian Lucia Flores Garavito",
+        "fechaNacimiento": "26-Set",
+        "foto": "carpeta1/mirian_lucia.jpg",
+        "mensaje": "¡Feliz cumpleaños, Mirian Lucia! Esperamos que tengas un día lleno de felicidad en ADM.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Daniel Alexander Rivas Varela",
+        "fechaNacimiento": "27-Set",
+        "foto": "carpeta1/daniel_alexander.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Daniel Alexander! Te deseamos mucho éxito en Mantenimiento este año.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Paul Isrrael Marti Campos",
+        "fechaNacimiento": "27-Set",
+        "foto": "carpeta1/paul_isrrael.jpg",
+        "mensaje": "¡Feliz cumpleaños, Paul Isrrael! Que tengas un día lleno de alegrías en Tarapoto.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Helen Doroteo Rojas",
+        "fechaNacimiento": "28-Set",
+        "foto": "carpeta1/helen.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Helen! Te deseamos un año lleno de calidad en tu vida.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Misuko Jannet Allcca Trucios",
+        "fechaNacimiento": "28-Set",
+        "foto": "carpeta1/misuko_jannet.jpg",
+        "mensaje": "¡Feliz cumpleaños, Misuko Jannet! Que este año en ADM esté lleno de éxitos para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Julio Cesar Almiron Martinez",
+        "fechaNacimiento": "28-Set",
+        "foto": "carpeta1/julio_cesar.jpg",
+        "mensaje": "¡Feliz día de cumpleaños, Julio Cesar! Te deseamos mucho éxito en Producción este año.",
+        "familia": "de parte de la familia de Yamboly"
+    },
+    {
+        "nombre": "Luis Leiva Mescua",
+        "fechaNacimiento": "29-Set",
+        "foto": "carpeta1/luis.jpg",
+        "mensaje": "¡Feliz cumpleaños, Luis! Que este año en Producción esté lleno de alegrías para ti.",
+        "familia": "de parte de la familia de Yamboly"
+    }
 ];
 
     function getCurrentDate() {

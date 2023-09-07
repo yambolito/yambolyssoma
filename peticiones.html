@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisición de Orden de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        .completed {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pending {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .delete-button {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Requisición de Orden de Compra</h1>
+        <form id="purchaseOrderForm">
+            <label for="companyName">Nombre de la Empresa:</label>
+            <input type="text" id="companyName" required>
+
+            <label for="area">Área:</label>
+            <input type="text" id="area" required>
+
+            <label for="jobType">Tipo de Trabajo:</label>
+            <input type="text" id="jobType" required>
+
+            <label for="details">Detalles:</label>
+            <textarea id="details" rows="4" required></textarea>
+
+            <button type="button" onclick="guardarRequisicion()">Guardar Requisición</button>
+        </form>
+
+        <div id="output">
+            <h2>Requisiciones Guardadas:</h2>
+            <ul id="requisicionesList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function guardarRequisicion() {
+            const companyName = document.getElementById("companyName").value;
+            const area = document.getElementById("area").value;
+            const jobType = document.getElementById("jobType").value;
+            const details = document.getElementById("details").value;
+
+            const requisicion = {
+                companyName,
+                area,
+                jobType,
+                details,
+                completed: false // Por defecto, la requisición no está completada
+            };
+
+            const requisicionesList = document.getElementById("requisicionesList");
+            const listItem = document.createElement("li");
+            listItem.textContent = `Empresa: ${requisicion.companyName}, Área: ${requisicion.area}, Tipo de Trabajo: ${requisicion.jobType}, Detalles: ${requisicion.details}`;
+
+            // Agregar botones para marcar como completada, pendiente o eliminar
+            const markCompletedButton = document.createElement("button");
+            markCompletedButton.textContent = "Marcar como Completada";
+            markCompletedButton.onclick = function() {
+                requisicion.completed = true;
+                listItem.classList.remove("pending");
+                listItem.classList.add("completed");
+                markCompletedButton.style.display = "none";
+                markPendingButton.style.display = "inline";
+            };
+
+            const markPendingButton = document.createElement("button");
+            markPendingButton.textContent = "Marcar como Pendiente";
+            markPendingButton.onclick = function() {
+                requisicion.completed = false;
+                listItem.classList.remove("completed");
+                listItem.classList.add("pending");
+                markPendingButton.style.display = "none";
+                markCompletedButton.style.display = "inline";
+            };
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Eliminar";
+            deleteButton.className = "delete-button";
+            deleteButton.onclick = function() {
+                requisicionesList.removeChild(listItem);
+            };
+
+            // Agregar clase de estilo según el estado de la requisición
+            if (requisicion.completed) {
+                listItem.classList.add("completed");
+                markCompletedButton.style.display = "none";
+            } else {
+                listItem.classList.add("pending");
+                markPendingButton.style.display = "none";
+            }
+
+            listItem.appendChild(markCompletedButton);
+            listItem.appendChild(markPendingButton);
+            listItem.appendChild(deleteButton);
+
+            requisicionesList.appendChild(listItem);
+
+            // Limpiar el formulario
+            document.getElementById("purchaseOrderForm").reset();
+        }
+    </script>
+</body>
+</html>

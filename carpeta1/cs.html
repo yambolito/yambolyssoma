@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Indicadores de Gestión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Estilos de los indicadores */
+.statistics {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.indicator {
+    flex: 1;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+    </style>
+    <header>
+        <h1>Dashboard de Indicadores de Gestión</h1>
+    </header>
+    <main>
+        <section class="statistics">
+            <div class="indicator" id="enero">
+                <h2>Enero 2023</h2>
+                <p>Frecuencia: <span id="frecuenciaEnero"></span></p>
+                <p>Gravedad: <span id="gravedadEnero"></span></p>
+                <p>Accidentabilidad: <span id="accidentabilidadEnero"></span></p>
+                <p>Días sin accidentes: <span id="diasSinAccidentesEnero"></span></p>
+            </div>
+            <div class="indicator" id="febrero">
+                <h2>Febrero 2023</h2>
+                <p>Frecuencia: <span id="frecuenciaFebrero"></span></p>
+                <p>Gravedad: <span id="gravedadFebrero"></span></p>
+                <p>Accidentabilidad: <span id="accidentabilidadFebrero"></span></p>
+                <p>Días sin accidentes: <span id="diasSinAccidentesFebrero"></span></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Datos proporcionados
+const enero = {
+    frecuencia: 0.0073,
+    gravedad: 0.004,
+    accidentabilidad: 0.0113,
+    diasSinAccidentes: 13
+};
+
+const febrero = {
+    frecuencia: 0,
+    gravedad: 0,
+    accidentabilidad: 0.007,
+    diasSinAccidentes: 20
+};
+
+// Función para mostrar los datos de un mes en el dashboard
+function mostrarIndicadores(mes, datos) {
+    const mesElement = document.getElementById(mes);
+    mesElement.querySelector('#frecuencia' + mes).textContent = datos.frecuencia.toFixed(4);
+    mesElement.querySelector('#gravedad' + mes).textContent = datos.gravedad.toFixed(4);
+    mesElement.querySelector('#accidentabilidad' + mes).textContent = datos.accidentabilidad.toFixed(4);
+    mesElement.querySelector('#diasSinAccidentes' + mes).textContent = datos.diasSinAccidentes;
+}
+
+// Mostrar los indicadores para enero y febrero
+mostrarIndicadores('enero', enero);
+mostrarIndicadores('febrero', febrero);
+    </script>
+</body>
+</html>

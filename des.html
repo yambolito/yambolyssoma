@@ -1,46 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="des.css">
-  <link rel="icon" href="carpeta1/Picture1.ico" type="carpeta" />
-</head>
-<header>
-  <div class="banner">🪲 The Lazy Bug<br>Join us for the ribbon cutting cermony!<br>Friday at 11:00 AM!</div>
-    <h1>Design Principles</h1>
-    <p id="mensaje"></p>
-</header>
-<body>
-  <main>
-    <h2>Heading 2</h2>
-    <section>
-      <h3>Article</h3>
-      <article>
-        <p>💯 Porem, ipsum dolor sit amet consectetur adipisicing elit. Soluta consequuntur recusandae molestias nemo, earum quam eius quis cupiditate blanditiis voluptates? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dolore ipsum commodi doloremque quos culpa, autem, ex dolorum ullam eius adipisci perspiciatis sequi, accusantium facere molestiae ad omnis nobis. Culpa?</p>
-      </article>
-    </section>
-    <section>
-      <h3>List</h3>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3<br><br></li>
-        <li>Item 4</li>
-        <li>Item 5</li>
-      </ul>
-    </section>
-    <div class="callout">
-      <h3>Color Contrast</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut facilis eius dolor. Voluptatibus eligendi officia quae dolores incidunt voluptatem placeat quidem aperiam, aliquam doloribus fuga, ad recusandae. Quisquam, culpa quam minima cumque at consectetur debitis error! Est impedit labore pariatur!</p>
-    </div>
-  </main>
-  <footer>
-    foooter content
-  </footer>
-  <script src="des.js"></script>
-  
-</body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión de Personal y Capacitaciones</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  #personnelList {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Gestión de Personal y Capacitaciones</h1>
+  </header>
+  <div class="container">
+    <h2>Ingresar Datos del Personal</h2>
+    <label for="name">Nombre:</label>
+    <input type="text" id="name">
+    <label for="trainingCount">Cantidad de Capacitaciones:</label>
+    <input type="number" id="trainingCount">
+    <button id="addPersonnel">Agregar Personal</button>
+  </div>
+
+  <div class="container" id="personnelList">
+    <h2>Listado de Personal y Capacitaciones</h2>
+    <!-- Aquí se mostrará la lista de personal y sus capacitaciones -->
+  </div>
+
+  <script>
+    const addPersonnelButton = document.getElementById("addPersonnel");
+    const personnelList = document.getElementById("personnelList");
+
+    addPersonnelButton.addEventListener("click", function() {
+      const nameInput = document.getElementById("name");
+      const trainingCountInput = document.getElementById("trainingCount");
+
+      const name = nameInput.value;
+      const trainingCount = parseInt(trainingCountInput.value);
+
+      if (name && trainingCount) {
+        const personnelEntry = document.createElement("div");
+        personnelEntry.className = "personnel-entry";
+
+        const nameLabel = document.createElement("label");
+        nameLabel.textContent = "Nombre: " + name;
+
+        const trainingLabel = document.createElement("label");
+        trainingLabel.textContent = "Cantidad de Capacitaciones: " + trainingCount;
+
+        const checklistLabel = document.createElement("label");
+        checklistLabel.textContent = "Checklist: ";
+
+        for (let i = 1; i <= trainingCount; i++) {
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = "training-" + i;
+          const checkboxLabel = document.createElement("label");
+          checkboxLabel.textContent = "Capacitación " + i;
+          checkboxLabel.appendChild(checkbox);
+          checklistLabel.appendChild(checkboxLabel);
+        }
+
+        personnelEntry.appendChild(nameLabel);
+        personnelEntry.appendChild(trainingLabel);
+        personnelEntry.appendChild(checklistLabel);
+
+        personnelList.appendChild(personnelEntry);
+
+        nameInput.value = "";
+        trainingCountInput.value = "";
+      }
+    });
+  </script>
+</body>
 </html>

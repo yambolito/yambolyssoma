@@ -306,7 +306,7 @@ body {
 
     <div id="formContainer" class="form-container">
         <h2>Agregar Nuevo Personal</h2>
-        <form id="personForm">
+        <form id="personForm" method="post" action="submit.php">
             <label for="name">Nombre completo:</label>
             <input type="text" id="name" required>
 
@@ -615,6 +615,10 @@ function updatePersonList(persons) {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+
+
+  
   </script>
   </main>
 </body>

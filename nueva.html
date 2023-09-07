@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabla de Trabajo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos de la tabla */
+.table-container {
+  margin: 20px;
+}
+
+.main-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main-table th, .main-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Estilos del formulario de ingreso */
+.input-container {
+  margin-top: 20px;
+}
+
+.input-container input {
+  margin: 5px;
+  padding: 5px;
+}
+
+.input-container button {
+  padding: 5px 10px;
+}
+
+/* Estilos de las acciones */
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-btn, .delete-btn {
+  margin: 0 5px;
+  cursor: pointer;
+}
+  </style>
+<div class="table-container">
+  <table class="main-table">
+    <tr>
+      <th>Respuestos</th>
+      <th>Parte A</th>
+      <th>Parte B</th>
+      <th>Parte C</th>
+      <th>Maquina</th>
+      <th>Acciones</th>
+    </tr>
+  </table>
+  <div class="input-container">
+    <input type="text" id="nombre-maquina" placeholder="Nombre de Maquina">
+    <input type="text" id="num-parte-a" placeholder="Num. Parte A">
+    <input type="text" id="num-parte-b" placeholder="Num. Parte B">
+    <input type="text" id="num-parte-c" placeholder="Num. Parte C">
+    <input type="text" id="tipo-repuesto" placeholder="Tipo de Repuesto">
+    <button id="btn-ingresar">Ingresar</button>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const btnIngresar = document.getElementById("btn-ingresar");
+  const mainTable = document.querySelector(".main-table");
+
+  btnIngresar.addEventListener("click", function() {
+    const nombreMaquina = document.getElementById("nombre-maquina").value;
+    const numParteA = document.getElementById("num-parte-a").value;
+    const numParteB = document.getElementById("num-parte-b").value;
+    const numParteC = document.getElementById("num-parte-c").value;
+    const tipoRepuesto = document.getElementById("tipo-repuesto").value;
+
+    const newRow = mainTable.insertRow(-1);
+    newRow.innerHTML = `
+      <td>${tipoRepuesto}</td>
+      <td>${numParteA}</td>
+      <td>${numParteB}</td>
+      <td>${numParteC}</td>
+      <td>${nombreMaquina}</td>
+      <td class="actions">
+        <span class="edit-btn">Editar</span>
+        <span class="delete-btn">Eliminar</span>
+      </td>
+    `;
+
+    // Limpiar campos de entrada después de ingresar los datos
+    document.getElementById("nombre-maquina").value = "";
+    document.getElementById("num-parte-a").value = "";
+    document.getElementById("num-parte-b").value = "";
+    document.getElementById("num-parte-c").value = "";
+    document.getElementById("tipo-repuesto").value = "";
+  });
+
+  // Implementar acciones de edición y eliminación (debe ser completado por el usuario)
+  mainTable.addEventListener("click", function(event) {
+    if (event.target.classList.contains("edit-btn")) {
+      // Acción de edición
+    } else if (event.target.classList.contains("delete-btn")) {
+      // Acción de eliminación
+    }
+  });
+});
+</script>
+</body>
+</html>
