@@ -1,0 +1,25 @@
+{
+  "name": "yamboly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server,js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yambolito/yambolyssoma.git"
+  },
+  "author": "alexander chagua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yambolito/yambolyssoma/issues"
+  },
+  "homepage": "https://github.com/yambolito/yambolyssoma#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.1.0",
+    "node": "^20.6.0"
+  }
+}
