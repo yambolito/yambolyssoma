@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Denuncia</title>
+    <link rel="stylesheet" href="hotigamiento.css">
+</head>
+<body>
+    <h1>Formulario de Denuncia de Hostigamiento Sexual</h1>
+    <form id="denunciaForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="nombre">Area de trabajo:</label>
+        <input   type="text" id="nombre" name="nombre" required><br>
+
+        <label for="edad">Edad:</label>
+        <input   type="number" id="edad" name="edad" required><br>
+
+        <label for="NUMERO DE TELEFONO">NUMERO DE TELEFONO:</label>
+        <input   type="number" id="TELE" name="edad" required><br>
+
+        <label for="SEDE">SEDE DE TRABAJO:</label>
+        <input   type="text" id="SEDE" name="nombre" required><br>
+
+        <label for="descripcion">Descripción del Hostigamiento:</label>
+        <textarea  id="descripcion" name="descripcion" required></textarea><br>
+
+        <button type="submit">Enviar Denuncia</button>
+</form>
+
+<div id="agradecimiento" style="display: none;">
+    Gracias por brindar la información. El área de recursos humanos se estará comunicando contigo. :)
+</div>
+
+<button id="descargarCSV">Descargar en CSV</button>
+
+    <script src="hostigamiento.js"></script>
+    <script src="FileSaver.js-master/src/FileSaver.js"></script>
+    <script src="json2csv-master/lib/json2csv.js"></script>
+</body>
+</html>
