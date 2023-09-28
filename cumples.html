@@ -59,10 +59,11 @@
 </head>
 <body>
   
-   <audio autoplay loop>
-    <source src="/carpeta1/CUMPLEAÑOS.mp3" type="audio/mp3">
+  <audio autoplay loop id="birthdayAudio">
+    <source src="carpeta1/CUMPLEAÑOS.mp3" type="audio/mp3">
     Tu navegador no soporta el elemento de audio.
   </audio>
+
   <img id="imalog" src="carpeta1/Picture1.png" alt="yamboly">
   
   
@@ -375,6 +376,11 @@
       const birthdayAudio = document.getElementById('birthdayAudio');
       birthdayAudio.play();
     }
+
+    // Reproduce automáticamente la música de cumpleaños al cargar la página
+    window.addEventListener('load', () => {
+      playBirthdayMusic();
+    });
 
   
   </script>
