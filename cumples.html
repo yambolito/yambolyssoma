@@ -8,10 +8,19 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-image: url('carpeta1/fiesta.jpg');
+      /*background-image: url('carpeta1/fiesta.jpg');*/
       background-size: cover;
       background-repeat: no-repeat;
     }
+
+    video#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
 
     .slider-container {
       max-width: 400px;
@@ -39,7 +48,7 @@
     }
 
     h1 {
-      color: #000000;
+      color: #ffffff;
     }
 
     h2 {
@@ -50,7 +59,7 @@
     p {
       font-size: 20px;
       margin-top: 10px;
-      color: #000000;
+      color: blue;
     }
     #imalog{
       width: 20%;
@@ -58,6 +67,10 @@
   </style>
 </head>
 <body>
+  <video autoplay loop muted id="backgroundVideo">
+    <source src="carpeta1/cumplev.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento de video.
+  </video>
   
   <audio autoplay loop id="birthdayAudio">
     <source src="carpeta1/CUMPLEAÑOS.mp3" type="audio/mp3">
@@ -93,9 +106,10 @@
     },
     {
       "nombre": "ANTHONY NOVELLA GARCIA",
-      "fechaNacimiento": "1990-10-16",
+      "fechaNacimiento": "1990-10-23",
       "foto": "carpeta1/antonynovela.jpeg",
-      "mensaje": "¡Feliz día de cumpleaños, Anthony! En Yamboly valoramos tu dedicación y esfuerzo. Que este día y año te traigan éxito y alegría. ¡Disfruta tu día al máximo! 🎉🥳"
+      "mensaje": "¡Feliz día de cumpleaños, Anthony! En Yamboly valoramos tu dedicación y esfuerzo. Que este día y año te traigan éxito y alegría. ¡Disfruta tu día al máximo! 🎉🥳",
+      "color": "#007bff"
     },
     {
       "nombre": "WILLIAM CUADROS CURO",
@@ -244,7 +258,7 @@
     {
       "nombre": "LEONEL MANUEL CUTI VALENZUELA",
       "fechaNacimiento": "1990-10-17",
-      "foto": "carpeta1/foto_de_leonel.jpg",
+      "foto": "carpeta1/cuti.jpeg",
       "mensaje": "¡Feliz día de cumpleaños, Leonel Manuel! En Yamboly valoramos tu dedicación y esfuerzo. Que este día y año te traigan éxito y alegría. ¡Disfruta tu día al máximo! 🎉🥳"
     },
     {
