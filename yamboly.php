@@ -1,0 +1,629 @@
+<?php
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SSOMA Yamboly - Gestión de Personal</title>
+    <link rel="icon" type="image/x-icon" href="carpeta1/Picture1.ico">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    background-color: #007bff;
+    padding: 20px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Estilos para dispositivos móviles */
+
+@media only screen and (max-width: 767px) {
+    /* Ajustar tamaño de la imagen del logo */
+    .logo img {
+        width: 50%;
+    }
+
+    /* Ajustar tamaño de la fuente para h1 */
+    h1 {
+        font-size: 24px;
+    }
+
+    /* Ajustar margen y tamaño de los botones */
+    .form-container button,
+    .search-container button {
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+
+    /* Ajustar tamaño de los inputs */
+    .form-container input[type="text"],
+    .form-container input[type="date"] {
+        width: 80%;
+    }
+
+    /* Ajustar margen y tamaño de la lista de personas */
+    .person-list ul li {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+}
+
+/* Estilos para tablets */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Ajustar tamaño de la imagen del logo */
+    .logo img {
+        width: 30%;
+    }
+
+    /* Ajustar tamaño de la fuente para h1 */
+    h1 {
+        font-size: 28px;
+    }
+
+    /* Ajustar margen y tamaño de los botones */
+    .form-container button,
+    .search-container button {
+        margin-top: 15px;
+        padding: 8px 12px;
+    }
+
+    /* Ajustar tamaño de los inputs */
+    .form-container input[type="text"],
+    .form-container input[type="date"] {
+        width: 60%;
+    }
+
+    /* Ajustar margen y tamaño de la lista de personas */
+    .person-list ul li {
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+}
+
+
+
+        .titulos a {
+      border: 1px solid transparent;
+      border-radius: 30px;
+      padding: 10px;
+      margin: 5px;
+      color: white;
+      text-decoration: none;
+      border-color: yellow;
+    }
+
+    .titulos a:hover {
+      background-color: yellow;
+      color: #ffffff;
+      border-color: yellow;
+    }
+    header{background-color: #15ebfa;}
+    img{
+      width: 10%;
+    }
+main{background-color: #15ebfa;}
+
+body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #00d9f1fb;
+    }
+
+    .container {
+        background-color: #007bff;
+        padding: 20px;
+        position: relative;
+    }
+
+    .logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="file"] {
+            margin-top: 10px;
+        }
+
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-container input[type="checkbox"] {
+            margin-top: 5px;
+        }
+
+        .form-container button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .person-photo {
+    margin-bottom: 10px;
+}
+        .person-list {
+            display: none;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .person-list ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.person-list ul li img {
+    display: block;
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+        .person-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .person-list ul li {
+            margin-bottom: 10px;
+        }
+
+        .person-list ul li img {
+            width: 100px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .person-list ul li button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-container {
+            margin-top: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+
+        .search-container button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+        .person-list {
+        display: block;
+        margin: 20px auto;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    .person-list ul li {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .person-list ul li img {
+        display: block;
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .person-list ul li span {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .person-list ul li button {
+        padding: 5px 10px;
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+        
+    </style>
+</head>
+<header class="header">
+<a href="yamboly.html"><img src="carpeta1/Picture1.ico" alt="logo"></a>
+  <nav  class="titulos">
+    <a href="yamboly.html">busqueda de personal
+    <a href="registros.html">registros</a>
+    <a href="documents.html">documentos SSOMA</a>
+    <a href="inventario.html">Inventario de EPP</a>
+    <a href="">Capacitaciones</a>
+    <a href="">formatos</a>
+    <a href="inspecciones">inspecciones</a>
+    <a href="hostigamiento.html">HOSTIGAMIENTO SEXUAL</a>
+    <a href="cumples.html">Cumpleaños Yamboly</a>
+  </nav>
+</header>
+
+<body>
+    <main>
+    <h1>Bienvenidos a SSOMA Yamboly</h1>
+
+    <button id="addPersonBtn">Agregar Nuevo Personal</button>
+
+    <div id="formContainer" class="form-container">
+        <h2>Agregar Nuevo Personal</h2>
+        <form id="personForm" method="post" action="submit.php">
+            <label for="name">Nombre completo:</label>
+            <input type="text" id="name" required>
+
+            <label for="age">Edad:</label>
+            <input type="text" id="age" required>
+
+            <label for="birthday">Fecha de Cumpleaños:</label>
+            <input type="date" id="birthday" required>
+
+            <label for="ingreso">Fecha de ingreso:</label>
+            <input type="date" id="ingreso" required>
+
+            <label for="occupation">Ocupación:</label>
+            <input type="text" id="occupation" required>
+
+            <label for="area">Área de Trabajo:</label>
+            <input type="text" id="area" required>
+
+            <label for="equipment">Tipo de Equipos de Seguridad:</label>
+            <div id="equipmentCheckboxes">
+                <label><input type="checkbox" name="equipment" value="zapato">Zapato de Seguridad</label>
+                <label for="deliveryDate">Fecha de Entrega:</label>
+                 <input type="date" id="deliveryDate">
+                <label><input type="checkbox" name="equipment" value="casco">Casco de Seguridad</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Orejeras para casco">Orejeras para casco</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Orejeras">Orejeras</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Guantes de badana">Guantes de badana</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Guantes anticorte">Guantes  anticorte</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="guantes de cuero">guantes cuero </label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="guantes acido nitrico">guantes de acido nitrico</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="guantes mapa">guantes mapa</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Guantes de soldar">guantes de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="casco de soldar">casco de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="camisa de soldar">camisa de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="hombreras para soldar">hombreras para soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="mandil de soldar">mandil de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="botas de soldar">botas de soldar</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="lentes">Lentes de seguridad</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="protector facial">protector facial</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="faja">faja de carga</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="entes Google">lentes Google</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="respirador 3m">respirador 3m</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="filtro organico">Filtro 3m organicos</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="filtro de particulas">filtro 3m particulas</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="traje de acido">traje de acido</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Chompa">Chompa</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="pantalones">pantalon de camara</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="medias">medias de camara</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="pasamontaña">pasamontaña</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="Guantes de camara">Guantes de camara</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="traje termico">traje termico</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="traje">Traje de Cámara</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="botas">Botas Blancas</label>
+                <input type="date" name="equipmentDeliveryDate">
+                <label><input type="checkbox" name="equipment" value="uniforme produccion">Uniforme produccion</label>
+                <input type="date" name="equipmentDeliveryDate" id="deliveryDate">
+            </div>
+
+            
+
+            <label for="photo">Foto del Trabajador:</label>
+            <input type="file" id="photo">
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Buscar por nombre...">
+        <button id="searchButton">Buscar</button>
+    </div>
+
+    <div id="personList" class="person-list">
+        <h2>Lista de Personal</h2>
+        <ul id="personListUl"></ul>
+    </div>
+
+    <script type="module">
+        
+        
+function updatePersonList(persons) {
+    const personListUl = document.getElementById('personListUl');
+    personListUl.innerHTML = '';
+
+    persons.forEach((person, index) => {
+        const li = document.createElement('li');
+
+        const img = document.createElement('img');
+        img.classList.add('person-photo');
+        img.src = person.photo;
+
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = `Nombre: ${person.name}`;
+
+        const ageSpan = document.createElement('span');
+        ageSpan.textContent = `Edad: ${person.age}`;
+
+        const birthdaySpan = document.createElement('span');
+        birthdaySpan.textContent = `Fecha de Cumpleaños: ${person.birthday}`;
+
+        const ingresoSpan = document.createElement('span');
+        ingresoSpan.textContent = `Fecha de ingreso: ${person.ingreso}`;
+
+        const occupationSpan = document.createElement('span');
+        occupationSpan.textContent = `Ocupación: ${person.occupation}`;
+
+        const areaSpan = document.createElement('span');
+        areaSpan.textContent = `Área de Trabajo: ${person.area}`;
+
+        const equipmentList = document.createElement('ul');
+        person.equipment.forEach(equipment => {
+            const equipmentItem = document.createElement('li');
+            equipmentItem.textContent = `Equipo: ${equipment.equipmentName}, Fecha de Entrega: ${equipment.deliveryDate || person.deliveryDate}`;
+            equipmentList.appendChild(equipmentItem);
+        });
+
+        const deliveryDateSpan = document.createElement('span');
+        deliveryDateSpan.textContent = `Fecha de Entrega: ${person.deliveryDate}`;
+
+        const modifyButton = document.createElement('button');
+        modifyButton.textContent = 'Modificar';
+        modifyButton.addEventListener('click', () => {
+            const newDeliveryDate = prompt('Ingrese la nueva fecha de entrega:');
+            if (newDeliveryDate) {
+                person.deliveryDate = newDeliveryDate;
+                localStorage.setItem('persons', JSON.stringify(persons));
+                updatePersonList(persons);
+            }
+        });
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.addEventListener('click', () => {
+            persons.splice(index, 1);
+            localStorage.setItem('persons', JSON.stringify(persons));
+            updatePersonList(persons);
+        });
+
+        li.appendChild(img);
+        li.appendChild(nameSpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(ageSpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(birthdaySpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(ingresoSpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(occupationSpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(areaSpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(equipmentList);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(deliveryDateSpan);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(modifyButton);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(deleteButton);
+
+        personListUl.appendChild(li);
+    });
+}
+      const addPersonBtn = document.getElementById('addPersonBtn');
+      const formContainer = document.getElementById('formContainer');
+      const personForm = document.getElementById('personForm');
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
+      const personList = document.getElementById('personList');
+
+      addPersonBtn.addEventListener('click', () => {
+          formContainer.style.display = 'block';
+      });
+
+      personForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const name = document.getElementById('name').value;
+          const age = document.getElementById('age').value;
+          const birthday = document.getElementById('birthday').value;
+          const ingreso = document.getElementById('ingreso').value;
+          const occupation = document.getElementById('occupation').value;
+          const area = document.getElementById('area').value;
+          const equipmentCheckboxes = document.querySelectorAll('#equipmentCheckboxes input[type="checkbox"]:checked');
+          const equipment = Array.from(equipmentCheckboxes).map(checkbox => checkbox.value);
+          const deliveryDate = document.getElementById('deliveryDate').value;
+          const photo = document.getElementById('photo').files[0];
+
+          
+        
+    
+
+          const newPerson = {
+    name: name,
+    age: age,
+    birthday: birthday,
+    ingreso: ingreso,
+    occupation: occupation,
+    area: area,
+    photo: URL.createObjectURL(photo),
+    equipment: equipment.map(e => ({ equipmentName: e, deliveryDate: deliveryDate })),
+    deliveryDate: deliveryDate
+    
+};
+
+          let persons = JSON.parse(localStorage.getItem('persons')) || [];
+          persons.push(newPerson);
+          localStorage.setItem('persons', JSON.stringify(persons));
+
+          personForm.reset();
+
+          if (searchInput.value) {
+              const searchTerm = searchInput.value.toLowerCase();
+              const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(searchTerm));
+              updatePersonList(filteredPersons);
+          }
+      });
+
+      searchButton.addEventListener('click', () => {
+          const searchTerm = searchInput.value.toLowerCase();
+          const persons = JSON.parse(localStorage.getItem('persons')) || [];
+
+          const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(searchTerm));
+
+          personList.style.display = 'block';
+          updatePersonList(filteredPersons);
+      });
+
+      const persons = JSON.parse(localStorage.getItem('persons')) || [];
+      if (searchInput.value) {
+          const searchTerm = searchInput.value.toLowerCase();
+          const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(searchTerm));
+          updatePersonList(filteredPersons);
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+    let username = prompt('Ingrese su nombre de usuario:');
+    let password = prompt('Ingrese su contraseña:');
+
+    // Verificar si se ha ingresado un nombre de usuario y contraseña
+    if (username && password) {
+        // Verificar si el nombre de usuario y la contraseña son correctos
+        if (username === 'yamboly' && password === 'yamboly2023') {
+            // Credenciales válidas. Acceso concedido.
+            console.log('Credenciales válidas. Acceso concedido.');
+        } else {
+            // Credenciales inválidas. Acceso denegado.
+            console.log('Credenciales inválidas. Acceso denegado.');
+            // Redirigir a la página de acceso denegado
+            window.location.href = 'pagina_denegada.html';
+        }
+    } else {
+        // Credenciales no proporcionadas. Acceso denegado.
+        console.log('Credenciales no proporcionadas. Acceso denegado.');
+        // Redirigir a la página de acceso denegado
+        window.location.href = 'pagina_denegada.html';
+    }
+});
+  
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAvU1qrqZsw_JzZfT80ehUNbVdR_JqSyDM",
+      authDomain: "yambolito-9430a.firebaseapp.com",
+      projectId: "yambolito-9430a",
+      storageBucket: "yambolito-9430a.appspot.com",
+      messagingSenderId: "858872776611",
+      appId: "1:858872776611:web:87aaf04cff209a5bfafc16",
+      measurementId: "G-FMPS3K8WJM"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+
+
+  
+  </script>
+  </main>
+</body>
+
+</html>
+?>
