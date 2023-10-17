@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .image {
+            margin: 10px;
+            text-align: center;
+        }
+        .image img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        #toggleButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="imagen1.jpg" alt="Imagen 1">
+            <p>Imagen 1</p>
+        </div>
+        <div class="image">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <p>Imagen 2</p>
+        </div>
+        <div class="image">
+            <img src="imagen3.jpg" alt="Imagen 3">
+            <p>Imagen 3</p>
+        </div>
+        <div class="image">
+            <img src="imagen4.jpg" alt="Imagen 4">
+            <p>Imagen 4</p>
+        </div>
+        <div class="image">
+            <img src="imagen5.jpg" alt="Imagen 5">
+            <p>Imagen 5</p>
+        </div>
+        <div class="image">
+            <img src="imagen6.jpg" alt="Imagen 6">
+            <p>Imagen 6</p>
+        </div>
+    </div>
+    <button id="toggleButton">Cambiar Vista</button>
+
+    <script>
+        const container = document.querySelector('.container');
+        const toggleButton = document.getElementById('toggleButton');
+
+        toggleButton.addEventListener('click', function() {
+            if (container.style.flexDirection === 'column') {
+                container.style.flexDirection = 'row';
+            } else {
+                container.style.flexDirection = 'column';
+            }
+        });
+    </script>
+</body>
+</html>
