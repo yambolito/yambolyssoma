@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Nuevo Usuario</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Crear Nuevo Usuario</h1>
+
+    <form action="procesar_creacion_usuario.php" method="post">
+        <label for="nuevo_usuario">Nuevo Usuario:</label>
+        <input type="text" name="nuevo_usuario" id="nuevo_usuario" required><br><br>
+
+        <label for="nueva_contrasena">Nueva Contraseña:</label>
+        <input type="password" name="nueva_contrasena" id="nueva_contrasena" required><br><br>
+
+        <label for="confirmar_contrasena">Confirmar Contraseña:</label>
+        <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" required><br><br>
+
+        <button type="submit">Crear Usuario</button>
+    </form>
+
+    <p><a href="index.php">Volver al inicio de sesión</a></p>
+</body>
+</html>
