@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de No Conformidades</title>
+    <style>
+        /* Puedes agregar estilos CSS aquí según tus necesidades */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Formato Registro No Conformidades / No Conformidad Potenciales</h2>
+<p>Código: FO-SGSST-SST-014</p>
+<p>Versión: 001</p>
+<p>Inicio de Vigencia: 02/01/2023</p>
+
+<form id="conformidadForm">
+    <table>
+        <tr>
+            <th>AUDITOR / RESPONSABLE</th>
+            <td><input type="text" name="auditorResponsable"></td>
+            <th>FECHA</th>
+            <td><input type="date" name="fecha"></td>
+        </tr>
+        <tr>
+            <th>ÁREA / PROCESO</th>
+            <td><input type="text" name="areaProceso"></td>
+            <th>NORMA Y CLÁUSULA</th>
+            <td><input type="text" name="normaYClasula"></td>
+        </tr>
+        <tr>
+            <th>AUDITADO / RESPONSABLE</th>
+            <td><input type="text" name="auditadoResponsable"></td>
+            <th>NÚMERO</th>
+            <td><input type="text" name="numero"></td>
+        </tr>
+    </table>
+
+    <h3>DESCRIPCIÓN DE LA NO CONFORMIDAD / NO CONFORMIDAD POTENCIALES</h3>
+    <textarea name="descripcion" rows="4" cols="50"></textarea>
+
+    <!-- Otros campos del formulario -->
+
+    <button type="button" onclick="guardarDatos()">Guardar</button>
+</form>
+
+<script>
+    function guardarDatos() {
+        // Aquí deberías agregar la lógica para enviar los datos a tu servidor y guardar en Excel
+        // Puedes utilizar AJAX o Fetch API para enviar los datos a tu servidor
+        // Ejemplo:
+        const formData = new FormData(document.getElementById('conformidadForm'));
+        fetch('/tu-servidor/guardar-datos.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Datos guardados:', data);
+            // Puedes agregar aquí más lógica según tu necesidad
+        })
+        .catch(error => {
+            console.error('Error al guardar datos:', error);
+        });
+    }
+</script>
+
+</body>
+</html>
