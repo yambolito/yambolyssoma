@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firma Digital y Foto</title>
+  <link rel="stylesheet" href="fitma.css">
+</head>
+<body>
+  <h1>Firma Digital y Foto</h1>
+  <canvas id="signatureCanvas" width="400" height="200"></canvas>
+  <br>
+  <button onclick="clearCanvas()">Limpiar Firma</button>
+  <br>
+  <button onclick="takePhoto()">Tomar Foto</button>
+  <br>
+  <button onclick="saveData()">Guardar Datos</button>
+  <br>
+  <button onclick="viewData()">Ver y Descargar Datos</button>
+  <br>
+  <video id="video" width="400" height="300" autoplay></video>
+  <canvas id="photoCanvas" width="400" height="300" style="display: none;"></canvas>
+
+  <script src="firma.js"></script>
+</body>
+</html>
